@@ -1,5 +1,7 @@
+require('dotenv').config()
 import app from "./frameworks/webserver/config/app";
 import connectDb from "./frameworks/webserver/config/db";
+
 
 const port =3000
 

@@ -1,4 +1,4 @@
-import { Iuser } from "../../../entity/userEntity";
+import { Iuser } from "../../../../entity/userEntity";
 
 import mongoose,{ Schema,Model } from "mongoose";
 
