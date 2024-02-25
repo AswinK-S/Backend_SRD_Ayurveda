@@ -12,6 +12,4 @@ export class UserRepository implements IUserRepository {
     return userExist
    }
     
-     
-
 }
