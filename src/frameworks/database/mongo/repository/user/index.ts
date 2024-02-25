@@ -1,5 +1,4 @@
-import findUserByEmail from "./findByEmail";
+import { findUserByEmail } from "./findByEmail"
 
-   export{
-     findUserByEmail
-   }
+export { findUserByEmail}
+   

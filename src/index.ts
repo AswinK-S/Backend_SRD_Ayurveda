@@ -7,7 +7,7 @@ const port =3000
 
 const start = ()=>{
     app.listen(port,()=>{
-        console.log(`server started on http://localhost/${port}`);
+        console.log(`server started on http://localhost:${port}`);
         connectDb()
     })
 }
