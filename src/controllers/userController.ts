@@ -1,5 +1,7 @@
 import { IUserUseCase } from "../useCase/interface/useCase/userUseCase";
-import { Req,Res } from "../frameworks/types/serverPackageTypes";
+import { Req,Res,Next } from "../frameworks/types/serverPackageTypes";
+
+import ErrorHandler from "../useCase/middleware/errorHandler";
 
 export class UserController{
     private userUseCase : IUserUseCase;
@@ -8,7 +10,19 @@ export class UserController{
         this.userUseCase = userUseCase
     }
 
+    //-----------------------------------------------------register
+    async registerUser(req:Req,res: Res,next:Next){
+      try{
+        res.status(200).json({
+          success: true,
+          message: "verification otp has been sent the mail",
+        });
+      }catch(err:any){
+        return next(new ErrorHandler(err.status,err.message))
+      }
+    }
 
+    //-----------------------------------------------------login
     async login(req: Req, res: Res) {
         try {
           console.log("req came from login");
@@ -19,5 +33,8 @@ export class UserController{
          console.log(error.message);
         }
       }
+
+   
+      
 
 }
