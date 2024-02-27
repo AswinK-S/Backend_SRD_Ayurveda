@@ -7,6 +7,7 @@ export function userRoute(router:Route){
 
     //signup Route
     router.post('/signup',catchAsyncErrors((req: Req, res: Res, next: Next)=>{
+        console.log('rgstr data in signup route');
         userController.registerUser(req,res,next)
     }))
 

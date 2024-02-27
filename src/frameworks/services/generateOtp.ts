@@ -10,6 +10,7 @@ export class GenerateOtp implements ICreateOtp{
             const randomIndex = Math.floor(Math.random() * stringNum.length);
             otp += stringNum[randomIndex]
         }
+        console.log('otp generated');
         return otp
     }
 }

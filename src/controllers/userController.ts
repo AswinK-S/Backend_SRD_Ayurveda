@@ -13,6 +13,10 @@ export class UserController{
     //-----------------------------------------------------register
     async registerUser(req:Req,res: Res,next:Next){
       try{
+        console.log("register data came ",req.body);
+        
+        await this.userUseCase.registerUser(req.body,next)
+        
         res.status(200).json({
           success: true,
           message: "verification otp has been sent the mail",

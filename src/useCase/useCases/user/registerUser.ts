@@ -3,11 +3,13 @@ import { IUserRepository } from "../../interface/repository/userRepository";
 import { ICreateOtp } from "../../interface/services/createOtp";
 import { ISendMail } from "../../interface/services/sendMail";
 import ErrorHandler from "../../middleware/errorHandler";
+import { IOtpRepository } from "../../interface/repository/otpRepository";
 
 export const registerUser = async(
     userRepository:IUserRepository,
     sendMail:ISendMail,
     otpGenerator:ICreateOtp,
+    otpRepository:IOtpRepository,
     name:string,
     email:string,
     mob:number,
@@ -22,9 +24,21 @@ export const registerUser = async(
                 return next(
                     new ErrorHandler(400, "user!!! already exist in the same mail id")
                 )
-            }else{
+            }
+            
+            // check whether the otp is send within the time
+            let isUserOnOtpRepo = await otpRepository.findUser(email)
+
+            if(isUserOnOtpRepo){
+                await sendMail.sendEmailVerification(name,email,isUserOnOtpRepo.otp as string)
+                
+            }
+            
+            else{
                 const otp = await otpGenerator.generateOtp()
+                console.log('iiiiiiiiiiiiiii   otp',otp);
                 await sendMail.sendEmailVerification(name,email,otp)
+                console.log('otp generated',otp);
             }
 
         }catch(error:any){

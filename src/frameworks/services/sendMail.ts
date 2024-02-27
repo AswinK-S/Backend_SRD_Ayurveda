@@ -11,8 +11,8 @@ export class SendMail implements ISendMail{
         this.transporter = nodemailer.createTransport({
             service: process.env.Mail_srvc,
             auth: {
-              user: process.env.GMAIL_USER,
-              pass: process.env.GMAIL_PASS
+              user: process.env.MAIL_from,
+              pass: process.env.MAIL_key
             }
           });
     }
@@ -23,10 +23,10 @@ export class SendMail implements ISendMail{
         return new Promise((resolve,reject)=>{
 
             const mailOptions = {
-                from: process.env.GMAIL_USER,
-                to: process.env.SND_EMAIL,
+                from: process.env.MAIL_from,
+                to: email,
                 subject: 'SRD email verification',
-                text: `Hi ${name},\n\n Your Verification Code is ${verificationCode}. Do not share this code with anyone.`,
+                text: `Hi, ${name},\n\n Your mail Verification Code is ${verificationCode}. Do not share this code with anyone.`,
               };
               
 
