@@ -1,5 +1,5 @@
 export interface IOtp {
-    _id:string,
+    _id?:string,
     email:string,
     otp:string,
     createdAt?:Date,

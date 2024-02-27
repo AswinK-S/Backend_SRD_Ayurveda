@@ -7,8 +7,13 @@ export function userRoute(router:Route){
 
     //signup Route
     router.post('/signup',catchAsyncErrors((req: Req, res: Res, next: Next)=>{
-        console.log('rgstr data in signup route');
+        console.log('user data came from front end');
         userController.registerUser(req,res,next)
+    }))
+
+    //create user
+    router.post('/create_user',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
+
     }))
 
     //login Route

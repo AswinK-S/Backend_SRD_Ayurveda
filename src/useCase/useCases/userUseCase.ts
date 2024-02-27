@@ -2,7 +2,7 @@ import { Res,Req,Next } from "../../frameworks/types/serverPackageTypes";
 import { IUserRepository } from "../interface/repository/userRepository";
 import { ICreateOtp } from "../interface/services/createOtp";  
 import { ISendMail } from "../interface/services/sendMail";
-
+import { IOtpRepository } from "../interface/repository/otpRepository";
 
 import { IUserUseCase } from "../interface/useCase/userUseCase";
 import { Iuser } from "../../entity/userEntity";
@@ -14,16 +14,19 @@ export class UserUseCase implements IUserUseCase{
     private readonly userRepository : IUserRepository;
     private readonly otpGenerator:ICreateOtp;
     private readonly sendMail:ISendMail;
+    private readonly otpRepository:IOtpRepository
 
     constructor(  
       userRepository:IUserRepository,
       otpGenerator:ICreateOtp,
-      sendMail:ISendMail
+      sendMail:ISendMail,
+      otpRepository:IOtpRepository
         )
     { 
       this.userRepository = userRepository,
       this.otpGenerator = otpGenerator,
-      this.sendMail = sendMail
+      this.sendMail = sendMail,
+      this.otpRepository = otpRepository
      }
 
     // user register-----------------------------------------------------
@@ -36,11 +39,12 @@ export class UserUseCase implements IUserUseCase{
         this.userRepository,
         this.sendMail,
         this.otpGenerator,
+        this.otpRepository,
         name,
         email,
         mob,
         password,
-        next
+        next,
       )
       return result
      }catch(error:any){

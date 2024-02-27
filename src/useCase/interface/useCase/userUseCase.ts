@@ -3,7 +3,7 @@ import { Next,Req,Res } from "../../../frameworks/types/serverPackageTypes";
 
 export interface IUserUseCase {
 
-    // register user
+    // register user data type specifiying 
     registerUser(
     {
         name,

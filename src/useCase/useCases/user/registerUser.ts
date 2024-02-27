@@ -4,12 +4,14 @@ import { ICreateOtp } from "../../interface/services/createOtp";
 import { ISendMail } from "../../interface/services/sendMail";
 import ErrorHandler from "../../middleware/errorHandler";
 import { IOtpRepository } from "../../interface/repository/otpRepository";
+import { IHashPassword } from "../../interface/services/hashPassword";
 
 export const registerUser = async(
     userRepository:IUserRepository,
     sendMail:ISendMail,
     otpGenerator:ICreateOtp,
     otpRepository:IOtpRepository,
+    bcrypt:IHashPassword,
     name:string,
     email:string,
     mob:number,
@@ -20,6 +22,7 @@ export const registerUser = async(
             // checking whether the user exists in the same email
             const isUserExistInMail = await userRepository.findUsersByEmail(email)
             console.log('isEmailExist :',isUserExistInMail);
+
             if(isUserExistInMail){
                 return next(
                     new ErrorHandler(400, "user!!! already exist in the same mail id")
@@ -31,14 +34,19 @@ export const registerUser = async(
 
             if(isUserOnOtpRepo){
                 await sendMail.sendEmailVerification(name,email,isUserOnOtpRepo.otp as string)
-                
+                const hashedPassword = await bcrypt.createHash(password as string)
+                password = hashedPassword
             }
             
             else{
                 const otp = await otpGenerator.generateOtp()
                 console.log('iiiiiiiiiiiiiii   otp',otp);
+                await otpRepository.createOtpUserCollection({email,otp})
                 await sendMail.sendEmailVerification(name,email,otp)
                 console.log('otp generated',otp);
+
+                const hashedPassword = await bcrypt.createHash(password as string)
+                password = hashedPassword
             }
 
         }catch(error:any){
