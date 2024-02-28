@@ -8,13 +8,11 @@ export interface IToken{
 
 
 export interface IJwt{
-    createVerificationJwt(payLoad:Iuser):Promise:<string>;
+    createVerificationJwt(payLoad:Iuser):Promise<string>;
     
     createAccessAndRefreshToken(id: string): Promise<IToken>;
 
-    verifyJwt(token: string): Promise<
-    | IUser
-    | {
+    verifyJwt(token: string): Promise< | Iuser | {
         userId: string;
         email: string;
         iat: number;

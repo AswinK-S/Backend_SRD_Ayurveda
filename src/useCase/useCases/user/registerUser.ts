@@ -5,6 +5,7 @@ import { ISendMail } from "../../interface/services/sendMail";
 import ErrorHandler from "../../middleware/errorHandler";
 import { IOtpRepository } from "../../interface/repository/otpRepository";
 import { IHashPassword } from "../../interface/services/hashPassword";
+import { IJwt } from "../../interface/services/jwt.types";
 
 export const registerUser = async(
     userRepository:IUserRepository,
@@ -12,6 +13,7 @@ export const registerUser = async(
     otpGenerator:ICreateOtp,
     otpRepository:IOtpRepository,
     bcrypt:IHashPassword,
+    jwtTokenGenerator:IJwt,
     name:string,
     email:string,
     mob:number,
@@ -36,6 +38,8 @@ export const registerUser = async(
                 await sendMail.sendEmailVerification(name,email,isUserOnOtpRepo.otp as string)
                 const hashedPassword = await bcrypt.createHash(password as string)
                 password = hashedPassword
+                const JwtToken = await jwtTokenGenerator.createVerificationJwt({name,email,password,mob})
+                return JwtToken
             }
             
             else{
