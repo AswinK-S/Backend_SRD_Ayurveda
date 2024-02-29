@@ -51,6 +51,9 @@ export const registerUser = async(
 
                 const hashedPassword = await bcrypt.createHash(password as string)
                 password = hashedPassword
+
+                const JwtToken = await jwtTokenGenerator.createVerificationJwt({name,email,password,mob})
+                return JwtToken
             }
 
         }catch(error:any){

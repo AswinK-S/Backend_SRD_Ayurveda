@@ -3,6 +3,9 @@ import { Req,Res,Next } from "../frameworks/types/serverPackageTypes";
 
 import ErrorHandler from "../useCase/middleware/errorHandler";
 
+import { accessTokenOptions,refreshTokenOptions } from "./middlewares/tokenOptions";
+import { IToken } from "../useCase/interface/services/jwt.types";
+
 
 
 export class UserController{
@@ -35,15 +38,36 @@ export class UserController{
       }
     }
 
+
+    //------------------------------------------------------creating user
+    async createUser(req:Req,res:Res,next:Next){
+      try{
+        let  token = req.cookies.verificationToken
+        const result = await this.userUseCase.createUser(
+          req.body.verificationCode,
+          token,
+          next
+        )
+          res.clearCookie('verificationToken').send(result)
+      }catch(error:any){
+        return next (new ErrorHandler(500,error.message))
+      }
+    }
+
     //-----------------------------------------------------login
-    async login(req: Req, res: Res) {
+    async login(req: Req, res: Res,next:Next) {
         try {
           console.log("req came from login");
-          const result = await this.userUseCase.login(req.body);
+          const result = await this.userUseCase.login(req.body,next);
           console.log('res login',result);
-          res.status(200).json(result?.user);
+
+          res.cookie('accessToken',result?.tokens.accessToken,accessTokenOptions)
+          res.cookie('refreshToken',result?.tokens.accessToken,refreshTokenOptions)
+
+
+          res.status(200).json({user:result?.user,message:'user logged in '});
         } catch (error: any) {
-         console.log(error.message);
+          return next (new ErrorHandler(500,error.message))
         }
       }
 

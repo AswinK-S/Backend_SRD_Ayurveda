@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt'
-import { IHashPassword } from "../../useCase/interface/services/hashPassword";
+import { IHashPassword } from '../../useCase/interface/services/hashPassword'
 
 export class Encrypted implements IHashPassword{
 

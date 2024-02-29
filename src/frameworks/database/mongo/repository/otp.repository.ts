@@ -24,4 +24,27 @@ export class OtpRepository  implements IOtpRepository{
             throw (error)
         }
     }
+
+
+
+    //
+
+    async findAndDeleteUser(
+        email: string,
+        verificationCode: string
+      ): Promise<boolean> {
+        try {
+          const result = await otpModel.findOneAndDelete({
+            email,
+            otp: verificationCode,
+          });
+          if (result) {
+            return true;
+          } else {
+            return false;
+          }
+        } catch (error) {
+          throw error;
+        }
+      }
 }

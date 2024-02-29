@@ -1,9 +1,8 @@
 import { Iuser } from "../../../entity/userEntity";
-import { Req } from "../../../frameworks/types/serverPackageTypes";
 
 export interface IToken{
-    accessToken:string,
-    refreshToken:string
+    accessToken:string;
+    refreshToken:string;
 }
 
 

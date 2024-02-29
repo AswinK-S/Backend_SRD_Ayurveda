@@ -1,4 +1,8 @@
 import { findUserByEmail } from "./findByEmail"
+import { createUser } from "./createUser"
 
-export { findUserByEmail}
+export { 
+    findUserByEmail,
+    createUser
+}
    
