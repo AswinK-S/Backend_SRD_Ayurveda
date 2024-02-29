@@ -5,6 +5,11 @@ import { userRoute } from "../routes/userRoute";
 
 const app: Express = express()
 
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+app.use(cookieParser())
+
+
 //cors setup
 app.use(cors({
     origin:'http://localhost:5173',
@@ -15,9 +20,7 @@ app.use(cors({
 
 
 
-app.use(cookieParser())
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
+
 
 app.use('/user',userRoute(express.Router()))
 

@@ -3,7 +3,10 @@ import { Req,Res,Next } from "../frameworks/types/serverPackageTypes";
 
 import ErrorHandler from "../useCase/middleware/errorHandler";
 
-import { accessTokenOptions,refreshTokenOptions } from "./middlewares/tokenOptions";
+import { 
+  accessTokenOptions,
+  refreshTokenOptions 
+} from "./middlewares/tokenOptions";
 import { IToken } from "../useCase/interface/services/jwt.types";
 
 
@@ -21,12 +24,20 @@ export class UserController{
         console.log("register data came ",req.body);
         
         const token = await this.userUseCase.registerUser(req.body,next)
-        
+        console.log('tkn while regtrng Usrcntrlr',token);
+
         res.cookie('verificationToken',token,{
-          httpOnly:true,
-          sameSite:'strict',
-          expires: new Date(Date.now() + 10 * 60* 1000)
+          // httpOnly:true,
+          // sameSite:'strict',
+          // expires: new Date(Date.now() + 10 * 60* 1000)
+          httpOnly: true,
+                    sameSite: 'none',
+                    secure : process.env.NODE_ENV !== 'development',
+                    maxAge: 30 * 24 * 60 * 60 * 1000 , 
         })
+
+
+       
 
         res.status(200).json({
           success: true,
@@ -42,7 +53,11 @@ export class UserController{
     //------------------------------------------------------creating user
     async createUser(req:Req,res:Res,next:Next){
       try{
-        let  token = req.cookies.verificationToken
+        console.log(req.cookies)
+        let  token = req.cookies.verificationToken as string || ''
+        console.log('token saved in cookies :',token);
+        
+
         const result = await this.userUseCase.createUser(
           req.body.verificationCode,
           token,
@@ -70,8 +85,6 @@ export class UserController{
           return next (new ErrorHandler(500,error.message))
         }
       }
-
-   
       
 
 }

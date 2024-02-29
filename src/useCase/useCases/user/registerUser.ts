@@ -39,6 +39,7 @@ export const registerUser = async(
                 const hashedPassword = await bcrypt.createHash(password as string)
                 password = hashedPassword
                 const JwtToken = await jwtTokenGenerator.createVerificationJwt({name,email,password,mob})
+                console.log('jwtToken created when user is on otpretpo',JwtToken);
                 return JwtToken
             }
             
@@ -53,6 +54,8 @@ export const registerUser = async(
                 password = hashedPassword
 
                 const JwtToken = await jwtTokenGenerator.createVerificationJwt({name,email,password,mob})
+                console.log('jwtToken created when user is not on otpRepo',JwtToken);
+
                 return JwtToken
             }
 
