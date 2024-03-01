@@ -13,10 +13,10 @@ export const login = async(
     email:string,
     password:string,
     next:Next,
-):Promise <{user:Iuser;tokens:IToken}  |void> =>{
+)    =>{
     try{
         const user = await userRepository.findUsersByEmail(email)
-        if(!user)return next (new ErrorHandler(400, 'invalid email id'))
+                if(!user)return next (new ErrorHandler(400, 'invalid email id'))
         
         const hashedPassword = user.password
         const result = bcrypt.comparePassword(password,hashedPassword)

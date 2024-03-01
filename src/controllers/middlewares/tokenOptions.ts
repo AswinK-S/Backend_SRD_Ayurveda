@@ -20,6 +20,7 @@ export const accessTokenOptions: ITokenOptions = {
   sameSite: "strict",
   secure: accessTokenProductionMode,
 };
+
 export const refreshTokenOptions: ITokenOptions = {
   expires: new Date(Date.now() + refreshTokenExpire * 24 * 60 * 60 * 1000), // 3 days
   maxAge: refreshTokenExpire * 24 * 60 * 60 * 1000,

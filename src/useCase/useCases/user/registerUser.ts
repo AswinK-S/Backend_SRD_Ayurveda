@@ -23,7 +23,6 @@ export const registerUser = async(
         try{
             // checking whether the user exists in the same email
             const isUserExistInMail = await userRepository.findUsersByEmail(email)
-            console.log('isEmailExist :',isUserExistInMail);
 
             if(isUserExistInMail){
                 return next(
@@ -31,10 +30,11 @@ export const registerUser = async(
                 )
             }
             
-            // check whether the otp is send within the time
+            // check whether the otp is already send within the time
             let isUserOnOtpRepo = await otpRepository.findUser(email)
 
             if(isUserOnOtpRepo){
+                //send the old otp
                 await sendMail.sendEmailVerification(name,email,isUserOnOtpRepo.otp as string)
                 const hashedPassword = await bcrypt.createHash(password as string)
                 password = hashedPassword

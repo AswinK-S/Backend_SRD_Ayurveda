@@ -75,12 +75,12 @@ export class UserController{
           console.log("req came from login");
           const result = await this.userUseCase.login(req.body,next);
           console.log('res login',result);
-
+          
           res.cookie('accessToken',result?.tokens.accessToken,accessTokenOptions)
           res.cookie('refreshToken',result?.tokens.accessToken,refreshTokenOptions)
 
 
-          res.status(200).json({user:result?.user,message:'user logged in '});
+              res.status(200).json({user:result?.user,message:'user logged in '});
         } catch (error: any) {
           return next (new ErrorHandler(500,error.message))
         }

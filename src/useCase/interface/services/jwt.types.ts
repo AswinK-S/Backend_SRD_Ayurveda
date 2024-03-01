@@ -1,4 +1,5 @@
 import { Iuser } from "../../../entity/userEntity";
+import { Iadmin } from "../../../entity/adminEntity";
 
 export interface IToken{
     accessToken:string;
@@ -6,6 +7,7 @@ export interface IToken{
 }
 
 
+// user's jwtToken
 export interface IJwt{
     createVerificationJwt(payLoad:Iuser):Promise<string>;
     
@@ -18,4 +20,18 @@ export interface IJwt{
         exp: number;
       }
   >;
+}
+
+//admin's jwtToken
+export interface IadminJwt{
+    createVerificationJwt(payLoad:Iadmin):Promise<string>
+
+    createAccessAndRefreshToken(id:string):Promise<IToken>
+
+    verifyJwt(token:string):Promise<|Iadmin |{
+        adminId:string;
+        email:string;
+        iat:number;
+        exp:number;
+    }>
 }
