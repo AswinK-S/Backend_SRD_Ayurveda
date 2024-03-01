@@ -12,7 +12,7 @@ export function userRoute(router:Route){
     }))
 
     //create user
-    router.post('/create_user',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
+    router.post('/create_user',catchAsyncErrors((req:   Req,res:Res,next:Next)=>{
         userController.createUser(req,res,next)
     }))
 

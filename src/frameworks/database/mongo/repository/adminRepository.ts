@@ -7,7 +7,7 @@ import  {
 } from './admin/index'
 
 
-export class adminRepository implements IadminRepository{
+export class AdminRepository implements IadminRepository{
 
     constructor(private adminModels:typeof adminModel){}
 

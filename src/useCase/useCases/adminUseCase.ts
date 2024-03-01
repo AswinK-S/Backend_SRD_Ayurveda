@@ -8,7 +8,7 @@ import { catchError } from "../middleware/catchError";
 
 import {adlogin} from './admin/index'
 
-export class adminUseCase implements IadminUseCase{
+export class AdminUseCase implements IadminUseCase{
 
     private adminRepository:IadminRepository;
     private bcrypt:IHashPassword;

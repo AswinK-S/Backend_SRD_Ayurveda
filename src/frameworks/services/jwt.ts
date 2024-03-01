@@ -4,7 +4,7 @@ import { IToken,IJwt } from "../../useCase/interface/services/jwt.types";
 import jwt from 'jsonwebtoken'
 require('dotenv').config()
 
-export class JWTtoken implements IJwt{
+export class    JWTtoken implements IJwt{
 
     Jwt_verification_key = process.env.Jwt_verification_key || "";
     Jwt_access_key = process.env.Jwt_access_key || "";
