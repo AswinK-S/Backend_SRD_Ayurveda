@@ -7,6 +7,7 @@ import {
   accessTokenOptions,
   refreshTokenOptions 
 } from "./middlewares/tokenOptions";
+
 import { IToken } from "../useCase/interface/services/jwt.types";
 
 
@@ -80,7 +81,7 @@ export class UserController{
           res.cookie('refreshToken',result?.tokens.accessToken,refreshTokenOptions)
 
 
-              res.status(200).json({user:result?.user,message:'user logged in '});
+         if (result) res.status(200).json({user:result?.user,message:'user logged in '});
         } catch (error: any) {
           return next (new ErrorHandler(500,error.message))
         }

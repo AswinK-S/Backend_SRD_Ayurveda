@@ -8,4 +8,6 @@ export function adminRoute(router:Route){
     router.post('/adlogin',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
         adminController.adlogin(req,res,next)
     }) )
+
+    return router
 }

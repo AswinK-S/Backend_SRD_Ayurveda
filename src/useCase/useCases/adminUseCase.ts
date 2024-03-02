@@ -5,8 +5,10 @@ import { IadminJwt,IToken } from "../interface/services/jwt.types";
 import { Iadmin } from "../../entity/adminEntity";
 import { Next } from "../../frameworks/types/serverPackageTypes";
 import { catchError } from "../middleware/catchError";
+import { adlogin } from "./admin/login";
 
-import {adlogin} from './admin/index'
+
+
 
 export class AdminUseCase implements IadminUseCase{
 

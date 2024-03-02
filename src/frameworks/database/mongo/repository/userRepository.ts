@@ -13,6 +13,7 @@ export class UserRepository implements IUserRepository {
    //check the user exists
    async findUsersByEmail(email:string):Promise <Iuser | null>{
     const userExist = await findUserByEmail(email,this.userModels)
+    console.log('repository find user with email :',userExist);
     return userExist
    }
 
