@@ -21,8 +21,8 @@ export class AdminController {
                 res.cookie('accessToken', result?.tokens.accessToken, accessTokenOptions)
                 res.cookie('refreshToken', result?.tokens.accessToken, refreshTokenOptions)
 
-                
-                res.status(200).json({ admin: result?.admin, message: 'admin logged in' })
+                console.log('adminnnnnnn token',result.tokens.accessToken);
+                res.status(200).json({ admin: result?.admin,token:result.tokens.accessToken, message: 'admin logged in' })
             }
 
         } catch (error: any) {

@@ -25,7 +25,8 @@ export const login = async (
         if (!result)return next(new ErrorHandler(400, 'Invalid Password'))
 
         user.password = ''
-        const tokens = await token.createAccessAndRefreshToken(user?._id as string)
+        const role ='user'
+        const tokens = await token.createAccessAndRefreshToken(user?._id as string,role as string)
         return {
             user,
             tokens,

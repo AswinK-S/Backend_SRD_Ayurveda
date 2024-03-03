@@ -11,7 +11,7 @@ export interface IToken{
 export interface IJwt{
     createVerificationJwt(payLoad:Iuser):Promise<string>;
     
-    createAccessAndRefreshToken(id: string): Promise<IToken>;
+    createAccessAndRefreshToken(id: string,role:string): Promise<IToken>;
 
     verifyJwt(token: string): Promise< | Iuser | {
         userId: string;
@@ -26,7 +26,7 @@ export interface IJwt{
 export interface IadminJwt{
     createVerificationJwt(payLoad:Iadmin):Promise<string>
 
-    createAccessAndRefreshToken(id:string):Promise<IToken>
+    createAccessAndRefreshToken(id:string,role:string):Promise<IToken>
 
     verifyJwt(token:string):Promise<|Iadmin |{
         adminId:string;

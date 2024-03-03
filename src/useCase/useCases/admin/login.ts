@@ -26,8 +26,10 @@ export const adlogin = async (
         if (!matchedPsswrd)next(new ErrorHandler(400, 'invalid password'))
 
         admin.password = ''
-        const tokens = await token.createAccessAndRefreshToken(admin?._id as string)
+        const role='admin'
+        const tokens = await token.createAccessAndRefreshToken(admin?._id as string,role as string)
         console.log('admin, tokens :  from admn login', admin, tokens);
+        
         return {
             admin,
             tokens,

@@ -81,7 +81,7 @@ export class UserController{
           res.cookie('refreshToken',result?.tokens.accessToken,refreshTokenOptions)
 
 
-         if (result) res.status(200).json({user:result?.user,message:'user logged in '});
+         if (result) res.status(200).json({user:result?.user,token:result.tokens.accessToken,message:'user logged in '});
         } catch (error: any) {
           return next (new ErrorHandler(500,error.message))
         }
