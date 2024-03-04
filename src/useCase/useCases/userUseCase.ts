@@ -5,7 +5,7 @@ import { ISendMail } from "../interface/services/sendMail";
 import { IOtpRepository } from "../interface/repository/otpRepository";
 
 import { IUserUseCase } from "../interface/useCase/userUseCase";
-import { Iuser } from "../../entity/userEntity";
+import { Iuser } from "../../@types/entity/userEntity";
 import { IToken,IJwt } from "../interface/services/jwt.types";
 import { catchError } from "../middleware/catchError";
 import { IHashPassword } from "../interface/services/hashPassword";

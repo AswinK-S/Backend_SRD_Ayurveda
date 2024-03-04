@@ -1,5 +1,5 @@
 import { IUserRepository } from "../../interface/repository/userRepository";
-import { Iuser } from "../../../entity/userEntity";
+import { Iuser } from "../../../@types/entity/userEntity";
 import { IHashPassword } from "../../interface/services/hashPassword";
 import { IToken } from "../../interface/services/jwt.types";
 import { IJwt } from "../../interface/services/jwt.types";

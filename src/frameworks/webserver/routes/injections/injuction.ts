@@ -8,6 +8,10 @@ import { OtpRepository } from "../../../database/mongo/repository/otp.repository
 import { JWTtoken } from "../../../services/jwt";
 import { Encrypted } from "../../../services/hshPswrdCls";
 
+//treatment
+import treatmentModel from "../../../database/mongo/models/treatmentModel";
+import { TreatmentRepository } from "../../../database/mongo/repository/treatmentRepo";
+
 //admin 
 import adminModel from "../../../database/mongo/models/adminModel";
 import { AdminController } from "../../../../controllers/adminController";
@@ -25,7 +29,8 @@ const jwtToken = new JWTtoken()
 //admin
 const adminRepository = new AdminRepository(adminModel)
 
- 
+// treatment 
+const treatmetnRepository = new TreatmentRepository()
 
 const userUseCase = new UserUseCase(
     userRepository,
@@ -42,7 +47,7 @@ const adminUseCase = new AdminUseCase(
     adminRepository,
     bcryptService,
     jwtToken,
-
+    treatmetnRepository,
 )
 
 const userController = new UserController(userUseCase)

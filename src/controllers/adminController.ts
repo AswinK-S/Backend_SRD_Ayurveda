@@ -29,4 +29,16 @@ export class AdminController {
             return next(new ErrorHandler(500, error.message))
         }
     }
+
+
+    //add Treatment
+    add_treatment(req:Req,res:Res,next:Next){
+        try{
+
+        }catch(error:any){
+            return next (new ErrorHandler(500,error.message))
+        }
+    }
+
+    
 }

@@ -1,4 +1,4 @@
-import { IOtp } from "../../../../entity/otp";
+import { IOtp } from "../../../../@types/entity/otp";
 
 import mongoose, { Schema } from "mongoose";
 

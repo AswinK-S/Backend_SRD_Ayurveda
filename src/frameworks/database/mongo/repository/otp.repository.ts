@@ -1,5 +1,5 @@
 import otpModel from "../models/otpModel";
-import { IOtp } from "../../../../entity/otp";
+import { IOtp } from "../../../../@types/entity/otp";
 import { IOtpRepository } from "../../../../useCase/interface/repository/otpRepository";
 import {error} from 'console'
 export class OtpRepository  implements IOtpRepository{

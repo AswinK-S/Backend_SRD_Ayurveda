@@ -1,6 +1,6 @@
 import userModel from "../models/userModel";
 import { IUserRepository } from "../../../../useCase/interface/repository/userRepository";
-import { Iuser } from "../../../../entity/userEntity";
+import { Iuser } from "../../../../@types/entity/userEntity";
 
 import {
     findUserByEmail,

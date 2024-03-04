@@ -1,5 +1,5 @@
 import { IadminRepository } from "../../../../useCase/interface/repository/adminRepository";
-import { Iadmin } from "../../../../entity/adminEntity";
+import { Iadmin } from "../../../../@types/entity/adminEntity";
 import adminModel from "../models/adminModel";
 
 import  {

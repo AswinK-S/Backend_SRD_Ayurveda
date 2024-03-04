@@ -1,4 +1,4 @@
-import { Iuser } from "../../../entity/userEntity";
+import { Iuser } from "../../../@types/entity/userEntity";
 import { Next,Req,Res } from "../../../frameworks/types/serverPackageTypes";
 import { IToken } from "../services/jwt.types";
 

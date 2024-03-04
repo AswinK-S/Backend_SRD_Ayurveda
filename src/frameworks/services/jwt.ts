@@ -1,6 +1,6 @@
-import { Iuser } from "../../entity/userEntity";
+import { Iuser } from "../../@types/entity/userEntity";
 import { IToken,IJwt, IadminJwt } from "../../useCase/interface/services/jwt.types";
-import { Iadmin } from "../../entity/adminEntity";
+import { Iadmin } from "../../@types/entity/adminEntity";
 
 import jwt from 'jsonwebtoken'
 require('dotenv').config()
