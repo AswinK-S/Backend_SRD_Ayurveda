@@ -22,7 +22,7 @@ export class TreatmentRepository implements ITreatmentRepository {
 
 
     // check if the treatment already exist in the database
-    async existTreatment(treatmentName: string, subTreatment?: string | undefined): Promise<string> {
+    async existTreatment(treatmentName: string, subTreatment?: string | undefined): Promise<ITreatment|string> {
         try{
             return await existTreatment(treatmentName, subTreatment)
         }catch(err){

@@ -9,5 +9,10 @@ export function adminRoute(router:Route){
         adminController.adlogin(req,res,next)
     }) )
 
+    //addTreatment
+    router.post('/addTreatment',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
+        adminController.add_treatment(req,res,next)
+    }))
+
     return router
 }

@@ -1,4 +1,4 @@
-import { IUserUseCase } from "../useCase/interface/useCase/userUseCase";
+import { IUserUseCase } from "../useCase/interface/IntrfcUseCase/userUseCase";
 import { Req,Res,Next } from "../frameworks/types/serverPackageTypes";
 
 import ErrorHandler from "../useCase/middleware/errorHandler";

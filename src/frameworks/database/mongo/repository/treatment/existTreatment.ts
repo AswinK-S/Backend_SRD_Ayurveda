@@ -1,9 +1,11 @@
+import { ITreatment } from "../../../../../@types/entity/treatmentEntity";
 import treatmentModel from "../../models/treatmentModel";
 
-export const existTreatment = async (treatmentName: string, subTreatment?: string): Promise<string> => {
+export const existTreatment = async (treatmentName: string, subTreatment?: string): Promise<ITreatment | string> => {
     try {
         let existingTreatment = await treatmentModel.findOne({ name: treatmentName });
-        let result: string = 'not exist';
+        let result: string | any
+        result ='not exist'
 
         //check if the treatment exists
         if (existingTreatment) {
@@ -16,15 +18,14 @@ export const existTreatment = async (treatmentName: string, subTreatment?: strin
                 });
 
                 if (existingSubTreatment) {
-                    result = 'treatment and sub-treatment exist';
+                    result = existingSubTreatment;
                 } else {
                     result = 'sub treatment not exists';
                 }
-            } else {
-                result = 'treatment exists';
-            }
+            } 
         }
 
+        console.log('result from existing treatment',result);
         return result;
     } catch (err) {
         throw err;

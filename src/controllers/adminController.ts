@@ -1,4 +1,4 @@
-import { IadminUseCase } from "../useCase/interface/useCase/adminUseCase";
+import { IadminUseCase } from "../useCase/interface/IntrfcUseCase/adminUseCase";
 import { Req, Res, Next } from "../frameworks/types/serverPackageTypes";
 
 import { accessTokenOptions, refreshTokenOptions } from "./middlewares/tokenOptions";
@@ -32,8 +32,14 @@ export class AdminController {
 
 
     //add Treatment
-    add_treatment(req:Req,res:Res,next:Next){
+    async add_treatment(req:Req,res:Res,next:Next){
         try{
+            console.log('result from admnCntrlr addTrtmnt',req.body);
+            let result = await this.adminUseCase.addTreatment(req.body,next)
+            
+            if(result){
+                res.status(200).json()
+            }
 
         }catch(error:any){
             return next (new ErrorHandler(500,error.message))

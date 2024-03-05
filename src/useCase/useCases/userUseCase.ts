@@ -4,7 +4,7 @@ import { ICreateOtp } from "../interface/services/createOtp";
 import { ISendMail } from "../interface/services/sendMail";
 import { IOtpRepository } from "../interface/repository/otpRepository";
 
-import { IUserUseCase } from "../interface/useCase/userUseCase";
+import { IUserUseCase } from "../interface/IntrfcUseCase/userUseCase";
 import { Iuser } from "../../@types/entity/userEntity";
 import { IToken,IJwt } from "../interface/services/jwt.types";
 import { catchError } from "../middleware/catchError";
