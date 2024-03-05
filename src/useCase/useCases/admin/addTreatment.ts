@@ -8,12 +8,13 @@ export const addTreatment = async (
     next: Next
 ) => {
     try {
-        console.log('add treatment useCase :', req.body);
-        const { treatmentName, subTreatment } = req.body;
-        const treatmentExist = await treatmentRepository.existTreatment(treatmentName, subTreatment)
-
+        console.log('add treatment useCase :', req);
+        const { treatmentName, subTreatments }:any = req;
+        const treatmentExist = await treatmentRepository.existTreatment(treatmentName, subTreatments)
+        console.log('treatmentEsixt frm add trtmnt :',treatmentExist);
         if (treatmentExist === 'not exist') {
-            const result = await treatmentRepository.addTreatment(treatmentName, [subTreatment])
+            console.log('trtmntNme :',treatmentName,'subTrtmnt :',subTreatments);
+            const result = await treatmentRepository.addTreatment(treatmentName, subTreatments)
             console.log('result from addTretmnt UseCase', result);
             // Ensure result is not void before returning
             if (result) {
@@ -25,7 +26,7 @@ export const addTreatment = async (
             }
         }
         else if (treatmentExist === 'sub treatment not exists') {
-            const updatedTreatment = await treatmentRepository.addSubTreatment(treatmentName, subTreatment);
+            const updatedTreatment = await treatmentRepository.addSubTreatment(treatmentName, subTreatments);
             console.log('result from addTretmnt UseCase :', updatedTreatment);
             // Ensure updatedTreatment is not void before returning
             if (updatedTreatment) {

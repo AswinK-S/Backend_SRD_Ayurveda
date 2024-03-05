@@ -3,11 +3,13 @@ import treatmentModel from "../../models/treatmentModel";
 
 export const addTreatment = async (name:string,subTreatments:string[]):Promise<ITreatment> =>{
     try {
+        console.log('addTreatmnt reopo in mongo ',subTreatments);
         let newTreatment = await treatmentModel.create({name,subTreatments})
         console.log('new Treatment :',newTreatment);
         return newTreatment.toObject() as ITreatment;
 
-    }catch(err){
+    }catch(err:any){
+      console.log(err.message);
         throw(err)
     }
 }

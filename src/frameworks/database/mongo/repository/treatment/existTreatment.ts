@@ -4,6 +4,7 @@ import treatmentModel from "../../models/treatmentModel";
 export const existTreatment = async (treatmentName: string, subTreatment?: string): Promise<ITreatment | string> => {
     try {
         let existingTreatment = await treatmentModel.findOne({ name: treatmentName });
+        console.log('existingTreatment from existTrtmnt -----',existingTreatment);
         let result: string | any
         result ='not exist'
 
@@ -25,7 +26,7 @@ export const existTreatment = async (treatmentName: string, subTreatment?: strin
             } 
         }
 
-        console.log('result from existing treatment',result);
+        console.log('result from existing treatment-----',result);
         return result;
     } catch (err) {
         throw err;
