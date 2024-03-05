@@ -14,5 +14,10 @@ export function adminRoute(router:Route){
         adminController.add_treatment(req,res,next)
     }))
 
+    // add Doctor
+    router.post('/add_Doc',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
+        adminController.addDoc(req,res,next)
+    }))
+
     return router
 }

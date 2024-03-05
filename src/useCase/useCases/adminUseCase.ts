@@ -11,6 +11,8 @@ import { addTreatment } from "./admin/addTreatment";
 import { ITreatmentRepository } from "../interface/repository/treatmentRepository";
 import { ITreatment } from "../../@types/entity/treatmentEntity";
 import ErrorHandler from "../middleware/errorHandler";
+import { NextFunction } from "express";
+import { IDoctor } from "../../@types/entity/doctorEntity";
 
 
 export class AdminUseCase implements IadminUseCase {
@@ -62,6 +64,12 @@ export class AdminUseCase implements IadminUseCase {
         } catch (err: any) {
             catchError(err, next);
         }
+    }
+
+    //add doctor
+   async addDoctor({ name, email, mob, password, address, experience, doctor_id, treatments }: IDoctor, next: NextFunction): Promise<void | { doctor: IDoctor; message?: string | undefined; }> {
+        console.log('in the adminUseCase');
+        
     }
 
 

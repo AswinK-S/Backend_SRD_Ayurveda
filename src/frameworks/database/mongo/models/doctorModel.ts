@@ -9,7 +9,10 @@ const doctorSchema: Schema<IDoctor> = new mongoose.Schema({
     address: { type: String, required: true },
     experience: { type: String, required: true },
     doctor_id: { type: String, required: true },
-    treatments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Treatment' }], // Reference to Treatment model
+    treatments: [{
+        treatment: { type: Schema.Types.ObjectId, ref: 'Treatment' }, 
+        subTreatments: [String] 
+    }], 
     status: { type: Boolean },
     isVerified: { type: Boolean },
 })

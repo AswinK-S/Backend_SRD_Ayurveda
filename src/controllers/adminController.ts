@@ -3,6 +3,7 @@ import { Req, Res, Next } from "../frameworks/types/serverPackageTypes";
 
 import { accessTokenOptions, refreshTokenOptions } from "./middlewares/tokenOptions";
 import ErrorHandler from "../useCase/middleware/errorHandler";
+import { IDoctor } from "../@types/entity/doctorEntity";
 
 
 export class AdminController {
@@ -34,15 +35,38 @@ export class AdminController {
     //add Treatment
     async add_treatment(req:Req,res:Res,next:Next){
         try{
-            console.log('result from admnCntrlr addTrtmnt',req.body);
+            console.log('req from admnCntrlr addTrtmnt',req.body);
             let result = await this.adminUseCase.addTreatment(req.body,next)
-            
+            console.log('result of admnCntrlr :',result);
             if(result){
-                res.status(200).json()
+                res.status(200).json(result)
             }
 
         }catch(error:any){
             return next (new ErrorHandler(500,error.message))
+        }
+    }
+
+
+    //add Doctor
+    async addDoc(req:Req,res:Res,next:Next){
+        try{
+            const{
+                name,
+                email,
+                mob,
+                password,
+                address,
+                experience,
+                doctor_id,
+                treatments
+            }:IDoctor=req.body
+
+            console.log('req body',req.body);
+            let docResult = await this.adminUseCase.addDoctor({name,email,mob,password,address,experience,doctor_id,treatments},next)
+
+        }catch(error:any){
+            return next(new ErrorHandler(500,error.message))
         }
     }
 

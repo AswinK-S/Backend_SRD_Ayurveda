@@ -2,6 +2,7 @@ import { Iadmin } from "../../../@types/entity/adminEntity";
 import { Next ,Req} from "../../../frameworks/types/serverPackageTypes";
 import { IToken } from "../services/jwt.types";
 import { ITreatment } from "../../../@types/entity/treatmentEntity";
+import { IDoctor } from "../../../@types/entity/doctorEntity";
 
 export interface IadminUseCase {
 
@@ -10,6 +11,9 @@ export interface IadminUseCase {
 
     //add treatment
     addTreatment(req:Req,next:Next):Promise<{treatment:ITreatment; message?: string;} | void>
+
+    //add Doctor
+    addDoctor({name,email,mob,password,address,experience,doctor_id,treatments}:IDoctor,next:Next):Promise <{doctor:IDoctor;message?:string;}| void>
     
 
 }
