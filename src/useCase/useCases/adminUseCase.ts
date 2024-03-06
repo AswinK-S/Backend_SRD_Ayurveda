@@ -13,7 +13,8 @@ import { catchError } from "../middleware/catchError";
 import {
     addDoctor,
     addTreatment,
-    adlogin
+    adlogin,
+    block
 } from './admin/index'
 
 import { ITreatmentRepository } from "../interface/repository/treatmentRepository";
@@ -23,6 +24,8 @@ import { NextFunction } from "express";
 import { IDoctor } from "../../@types/entity/doctorEntity";
 import { IDoctorRepository } from "../interface/repository/doctorRepo";
 
+import { IUserRepository } from "../interface/repository/userRepoIntfc";
+import { Iuser } from "../../@types/entity/userEntity";
 
 export class AdminUseCase implements IadminUseCase {
 
@@ -31,19 +34,22 @@ export class AdminUseCase implements IadminUseCase {
     private jwtToken: IadminJwt;
     private treatmentRepository: ITreatmentRepository;
     private doctorRepository:IDoctorRepository;
+    private userRepository:IUserRepository;
 
     constructor(
         adminRepository: IadminRepository,
         bcrypt: IHashPassword,
         jwtToken: IadminJwt,
         treatmentRepository: ITreatmentRepository,
-        doctorRepository:IDoctorRepository
+        doctorRepository:IDoctorRepository,
+        userRepository:IUserRepository,
     ) {
         this.adminRepository = adminRepository;
         this.bcrypt = bcrypt;
         this.jwtToken = jwtToken;
         this.treatmentRepository = treatmentRepository;
-        this.doctorRepository = doctorRepository
+        this.doctorRepository = doctorRepository;
+        this.userRepository= userRepository;
 
     }
 
@@ -90,6 +96,17 @@ export class AdminUseCase implements IadminUseCase {
         
     }
 
+
+    //block user
+    async blockUser(id:string,next:Next):Promise<string | void>{
+        try{
+            let result = await block(this.userRepository,id,next)
+            return result
+        }
+        catch(err:any){
+            catchError(err,next)
+        }
+    }
 
 
 }

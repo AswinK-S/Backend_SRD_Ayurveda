@@ -6,7 +6,7 @@ import ErrorHandler from "../useCase/middleware/errorHandler";
 import { 
   accessTokenOptions,
   refreshTokenOptions 
-} from "./middlewares/tokenOptions";
+} from "../frameworks/middlewares/tokenOptions";
 
 import { IToken } from "../useCase/interface/services/jwt.types";
 

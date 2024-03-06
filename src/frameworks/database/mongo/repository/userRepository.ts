@@ -1,10 +1,11 @@
 import userModel from "../models/userModel";
-import { IUserRepository } from "../../../../useCase/interface/repository/userRepository";
+import { IUserRepository } from "../../../../useCase/interface/repository/userRepoIntfc";
 import { Iuser } from "../../../../@types/entity/userEntity";
 
 import {
     findUserByEmail,
-    createUser
+    createUser,
+    blckUsrRepo,
 } from './user/index'
 export class UserRepository implements IUserRepository {
 
@@ -20,6 +21,10 @@ export class UserRepository implements IUserRepository {
     //createUser
     async createUser(newUser: Iuser): Promise<Iuser> {
         return await createUser(newUser,this.userModels)
+    }
+
+    async blockUser(id:string):Promise<string>{
+        return await blckUsrRepo(id)
     }
     
 }

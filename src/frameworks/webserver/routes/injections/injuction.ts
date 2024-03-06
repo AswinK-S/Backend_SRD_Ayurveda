@@ -54,6 +54,7 @@ const adminUseCase = new AdminUseCase(
     jwtToken,
     treatmetnRepository,
     doctorRepository,
+    userRepository,
 )
 
 const userController = new UserController(userUseCase)

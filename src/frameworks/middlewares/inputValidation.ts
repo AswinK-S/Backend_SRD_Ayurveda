@@ -1,5 +1,5 @@
 import { TInputValidation } from "../../useCase/interface/inputValdtn/inptVldtnType";
-import { Req,Next,Res } from "../../frameworks/types/serverPackageTypes";
+import { Req,Next,Res } from "../types/serverPackageTypes";
 import ErrorHandler from "../../useCase/middleware/errorHandler";
 
 

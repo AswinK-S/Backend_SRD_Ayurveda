@@ -1,5 +1,5 @@
 import { Next } from "../../../frameworks/types/serverPackageTypes";
-import { IUserRepository } from "../../interface/repository/userRepository";
+import { IUserRepository } from "../../interface/repository/userRepoIntfc";
 import { ICreateOtp } from "../../interface/services/createOtp";
 import { ISendMail } from "../../interface/services/sendMail";
 import ErrorHandler from "../../middleware/errorHandler";

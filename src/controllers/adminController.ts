@@ -1,7 +1,7 @@
 import { IadminUseCase } from "../useCase/interface/IntrfcUseCase/adminUseCase";
 import { Req, Res, Next } from "../frameworks/types/serverPackageTypes";
 
-import { accessTokenOptions, refreshTokenOptions } from "./middlewares/tokenOptions";
+import { accessTokenOptions, refreshTokenOptions } from "../frameworks/middlewares/tokenOptions";
 import ErrorHandler from "../useCase/middleware/errorHandler";
 import { IDoctor } from "../@types/entity/doctorEntity";
 
@@ -74,6 +74,20 @@ export class AdminController {
 
         }catch(error:any){
             return next(new ErrorHandler(500,error.message))
+        }
+    }
+
+
+
+    // block user 
+    async block(req:Req,res:Res,next:Next){
+        try{
+            const id:string =req.params.id
+            const usrBlckRslt = await this.adminUseCase.blockUser(id,next)
+            console.log('rslt frm cntrlr usrBlkRslt',usrBlckRslt);
+            res.status(200).json(usrBlckRslt)
+        }catch(err:any){
+            return next (new ErrorHandler(500,err.message))
         }
     }
 

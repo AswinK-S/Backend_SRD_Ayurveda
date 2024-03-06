@@ -19,5 +19,12 @@ export function adminRoute(router:Route){
         adminController.addDoc(req,res,next)
     }))
 
+
+
+    // block user
+    router.post('/block_User/:id',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
+        adminController.block(req,res,next)
+    }))
+
     return router
 }

@@ -3,7 +3,7 @@ import { IDoctorRepository } from "../../interface/repository/doctorRepo";
 import ErrorHandler from "../../middleware/errorHandler";
 import { Next } from "../../../frameworks/types/serverPackageTypes";
 
-export const addDoctor =async(
+export const    addDoctor =async(
     doctorRepository:IDoctorRepository,
     { name, email, mob, password, address, experience, doctor_id, treatments }: IDoctor ,
     next:Next

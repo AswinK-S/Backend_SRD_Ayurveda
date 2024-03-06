@@ -1,4 +1,4 @@
-import { IUserRepository } from "../../interface/repository/userRepository";
+import { IUserRepository } from "../../interface/repository/userRepoIntfc";
 import { Iuser } from "../../../@types/entity/userEntity";
 import { IHashPassword } from "../../interface/services/hashPassword";
 import { IToken } from "../../interface/services/jwt.types";
