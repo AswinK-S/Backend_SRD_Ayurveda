@@ -83,7 +83,7 @@ export class AdminUseCase implements IadminUseCase {
     try{
         console.log('in the adminUseCase');
         const addDocResult = await addDoctor(this.doctorRepository,{ name, email, mob, password, address, experience, doctor_id, treatments },next)
-
+        return addDocResult
     }catch(err:any){
         catchError(err,next)
     }    

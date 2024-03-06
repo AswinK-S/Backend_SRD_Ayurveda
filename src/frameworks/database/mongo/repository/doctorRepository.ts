@@ -4,7 +4,7 @@ import {
     addDoctorRepo,
     isDoctorExist
 } from './doctor/index'
-export class doctorRepository implements IDoctorRepository{
+export class DoctorRepository implements IDoctorRepository{
 
     //add new doctor
     async addDoctor({name, email, mob, password, address, experience, doctor_id, treatments }: IDoctor): Promise<IDoctor> {
@@ -24,7 +24,9 @@ export class doctorRepository implements IDoctorRepository{
         try{
             return await isDoctorExist(email)
         }catch(err:any){
+
             console.log('err from clss dctr repo isDoctor');
+            throw (err)
         }
 
     }

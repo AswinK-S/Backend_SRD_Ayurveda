@@ -11,6 +11,11 @@ export const addDoctor =async(
         try{
             console.log('addDoctor function from useCases');
             const isDocExist = await doctorRepository.isDoctorExist(email)
+            console.log('isDoc exist :',isDocExist);
+            if(isDocExist ==='doctor not exist in this email'){
+                const result = await doctorRepository.addDoctor({name, email, mob, password, address, experience, doctor_id, treatments})
+                return{doctor:result,message:'added new doctor'}
+            }
             
         }catch(err:any){
             return next (new ErrorHandler(500,err.message))

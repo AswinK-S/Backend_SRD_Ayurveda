@@ -65,6 +65,9 @@ export class AdminController {
             console.log('req body',req.body);
             let docResult = await this.adminUseCase.addDoctor({name,email,mob,password,address,experience,doctor_id,treatments},next)
             console.log('docResult from controller >',docResult);
+            if(docResult){
+                res.status(200).json(docResult)
+            }
 
         }catch(error:any){
             return next(new ErrorHandler(500,error.message))

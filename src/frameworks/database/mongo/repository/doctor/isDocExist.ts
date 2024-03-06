@@ -4,14 +4,14 @@ import { IDoctor } from "../../../../../@types/entity/doctorEntity";
 export const isDoctorExist = async (email:string):Promise<IDoctor|string> =>{
     try{
 
-        const isDoc = await doctorModel.findOne({email})
+        const isDoc = await doctorModel.findOne({email:email})
         let result:IDoctor|string
         console.log('result from doctorModel --',isDoc);
         if(isDoc){
              result =isDoc
         }
         else{
-             result ='doctor not exist'
+             result ='doctor not exist in this email'
         }
         console.log('result after finding doc',result);
         return result

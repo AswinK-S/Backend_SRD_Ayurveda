@@ -1,7 +1,7 @@
 import { ITreatment } from "../../../../../@types/entity/treatmentEntity";
 import treatmentModel from "../../models/treatmentModel";
 
-export const    existTreatment = async (treatmentName: string, subTreatment?: string): Promise<ITreatment | string> => {
+export const  existTreatment = async (treatmentName: string, subTreatment?: string): Promise<ITreatment | string> => {
     try {
         let existingTreatment = await treatmentModel.findOne({ name: treatmentName });
         console.log('existingTreatment from existTrtmnt -----',existingTreatment);
