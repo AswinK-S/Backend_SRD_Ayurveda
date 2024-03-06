@@ -2,7 +2,7 @@ import { Next, Req } from "../../../frameworks/types/serverPackageTypes";
 import { ITreatmentRepository } from "../../interface/repository/treatmentRepository";
 import ErrorHandler from "../../middleware/errorHandler";
 
-export const addTreatment = async (
+export const    addTreatment = async (
     treatmentRepository: ITreatmentRepository,
     req: Req,
     next: Next
