@@ -9,11 +9,11 @@ import { JWTtoken } from "../../../services/jwt";
 import { Encrypted } from "../../../services/hshPswrdCls";
 
 //treatment
-import treatmentModel from "../../../database/mongo/models/treatmentModel";
+// import treatmentModel from "../../../database/mongo/models/treatmentModel";
 import { TreatmentRepository } from "../../../database/mongo/repository/treatmentRepo";
 
 //doctor
-import doctorModel from "../../../database/mongo/models/doctorModel";
+// import doctorModel from "../../../database/mongo/models/doctorModel";
 import { DoctorRepository } from "../../../database/mongo/repository/doctorRepository";
 
 //admin 

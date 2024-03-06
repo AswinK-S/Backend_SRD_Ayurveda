@@ -15,6 +15,8 @@ export const addDoctor =async(
             if(isDocExist ==='doctor not exist in this email'){
                 const result = await doctorRepository.addDoctor({name, email, mob, password, address, experience, doctor_id, treatments})
                 return{doctor:result,message:'added new doctor'}
+            }else{
+                // return {doctor:isDocExist,message:'doctor already exists'}
             }
             
         }catch(err:any){
