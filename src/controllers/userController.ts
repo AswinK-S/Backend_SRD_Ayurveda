@@ -8,8 +8,7 @@ import {
   refreshTokenOptions 
 } from "../frameworks/middlewares/tokenOptions";
 
-import { IToken } from "../useCase/interface/services/jwt.types";
-
+    
 
 
 export class UserController{

@@ -6,7 +6,7 @@ import { IJwt } from "../../interface/services/jwt.types";
 import { Next } from "../../../frameworks/types/serverPackageTypes";
 import ErrorHandler from "../../middleware/errorHandler";
 
-export const login = async (
+export const  login = async (
     userRepository: IUserRepository,
     bcrypt: IHashPassword,
     token: IJwt,

@@ -9,12 +9,13 @@ import { JWTtoken } from "../../../services/jwt";
 import { Encrypted } from "../../../services/hshPswrdCls";
 
 //treatment
-// import treatmentModel from "../../../database/mongo/models/treatmentModel";
 import { TreatmentRepository } from "../../../database/mongo/repository/treatmentRepo";
 
 //doctor
-// import doctorModel from "../../../database/mongo/models/doctorModel";
 import { DoctorRepository } from "../../../database/mongo/repository/doctorRepository";
+import { DoctorController } from "../../../../controllers/doctorController";
+import { DoctorUseCase } from "../../../../useCase/useCases/doctorUseCase";
+
 
 //admin 
 import adminModel from "../../../database/mongo/models/adminModel";
@@ -57,7 +58,10 @@ const adminUseCase = new AdminUseCase(
     userRepository,
 )
 
+const doctorUseCase = new DoctorUseCase()
+
 const userController = new UserController(userUseCase)
 const adminController = new AdminController(adminUseCase)
+const doctorController = new DoctorController(doctorUseCase)
 
-export {userController,adminController}
+export {userController,adminController,doctorController}

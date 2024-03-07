@@ -8,6 +8,8 @@ import morgan from 'morgan'
 // Routes
 import { userRoute } from "../routes/userRoute";
 import { adminRoute } from "../routes/adminRoute";
+import { doctorRoute } from "../routes/doctorRoute";
+
 import { Routes } from "react-router-dom";
 import { url } from "inspector";
 
@@ -33,6 +35,7 @@ app.use(cors({
 
 app.use('/user',userRoute(express.Router()))
 app.use('/admin',adminRoute(express.Router()))
+app.use('/doctor',doctorRoute(express.Router()))
 
 // unknown url
 app.all("*", (req: Request, res: Response, next: NextFunction) => {
