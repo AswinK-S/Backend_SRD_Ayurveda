@@ -2,7 +2,8 @@ import { IDoctor } from "../../../../@types/entity/doctorEntity";
 import { IDoctorRepository } from "../../../../useCase/interface/repository/doctorRepo";
 import {
     addDoctorRepo,
-    isDoctorExist
+    isDoctorExist,
+    lstUnlstDoc
 } from './doctor/index'
 export class DoctorRepository implements IDoctorRepository{
 
@@ -29,5 +30,17 @@ export class DoctorRepository implements IDoctorRepository{
             throw (err)
         }
 
+    }
+
+    // list or unlist doctor 
+    async list_UnlistDoc(id:string):Promise<string>{
+        try{
+            console.log('id from doctor repo',id);
+            let result= await lstUnlstDoc(id)
+            console.log('result from repository----',result);
+            return result
+        }catch(err:any){
+            throw(err)
+        }
     }
 }

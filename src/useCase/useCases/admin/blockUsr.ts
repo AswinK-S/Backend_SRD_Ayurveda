@@ -1,4 +1,3 @@
-import { Iuser } from "../../../@types/entity/userEntity"
 import { Next } from "../../../frameworks/types/serverPackageTypes"
 import { IUserRepository } from "../../interface/repository/userRepoIntfc"
 import ErrorHandler from "../../middleware/errorHandler"

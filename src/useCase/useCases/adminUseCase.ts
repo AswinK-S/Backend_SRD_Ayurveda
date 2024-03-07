@@ -14,18 +14,17 @@ import {
     addDoctor,
     addTreatment,
     adlogin,
-    block
+    block,
+    listUnlist
 } from './admin/index'
 
 import { ITreatmentRepository } from "../interface/repository/treatmentRepository";
 import { ITreatment } from "../../@types/entity/treatmentEntity";
-import ErrorHandler from "../middleware/errorHandler";
 import { NextFunction } from "express";
 import { IDoctor } from "../../@types/entity/doctorEntity";
 import { IDoctorRepository } from "../interface/repository/doctorRepo";
 
 import { IUserRepository } from "../interface/repository/userRepoIntfc";
-import { Iuser } from "../../@types/entity/userEntity";
 
 export class AdminUseCase implements IadminUseCase {
 
@@ -84,6 +83,8 @@ export class AdminUseCase implements IadminUseCase {
         }
     }
 
+// --------------------------------------------------------------------------------------------------------doctor
+
    //add doctor
    async addDoctor({ name, email, mob, password, address, experience, doctor_id, treatments }: IDoctor, next: NextFunction): Promise<void | { doctor: IDoctor; message?: string}> {
     try{
@@ -96,8 +97,21 @@ export class AdminUseCase implements IadminUseCase {
         
     }
 
+    // list or unlist doctor
+    async listUnlstDoc(id:string,next:Next):Promise<string|void>{
+        try{
+            console.log('id in usecasse ---',id);
+            let result =await listUnlist(this.doctorRepository,id,next)
+            console.log('result from useCase--->',result);
+            return result
+        }catch(err:any){
+            catchError(err,next)
+        }
+    }
 
-    //block user
+// -----------------------------------------------------------------user 
+
+    //block or unblock user
     async blockUser(id:string,next:Next):Promise<string | void>{
         try{
             let result = await block(this.userRepository,id,next)

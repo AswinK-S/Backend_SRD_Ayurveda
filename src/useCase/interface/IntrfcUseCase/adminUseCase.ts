@@ -3,7 +3,6 @@ import { Next ,Req} from "../../../frameworks/types/serverPackageTypes";
 import { IToken } from "../services/jwt.types";
 import { ITreatment } from "../../../@types/entity/treatmentEntity";
 import { IDoctor } from "../../../@types/entity/doctorEntity";
-import { Iuser } from "../../../@types/entity/userEntity";
 export interface IadminUseCase {
 
     // adminLogin
@@ -14,8 +13,13 @@ export interface IadminUseCase {
 
     //add Doctor
     addDoctor({name,email,mob,password,address,experience,doctor_id,treatments}:IDoctor,next:Next):Promise <{doctor:IDoctor;message?:string;}| void>
-    
-    // block user
+    //list or unlist user
+    listUnlstDoc(id:string,next:Next):Promise<string|void>
+
+
+    // block or unblock user
     blockUser(id:string,next:Next):Promise<string|void>
+
+
 
 }

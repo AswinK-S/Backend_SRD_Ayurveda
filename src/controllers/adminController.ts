@@ -78,8 +78,21 @@ export class AdminController {
     }
 
 
+    // list or unlist doctor 
+    async docStatus(req:Req,res:Res,next:Next){
+        try{
+            let id:string = req.params.id
+            console.log('id in cntrlr',id);
+            const lstUnlstDocRslt = await this.adminUseCase.listUnlstDoc(id,next)
+            console.log('admn cntrlr rslt aftr list/unlst doc',lstUnlstDocRslt);
+            res.status(200).json(lstUnlstDocRslt)
+        }catch(err:any){
+            return next (new ErrorHandler(500,err.message))
+        }
+    }
 
-    // block user 
+
+    // block or unblock user 
     async block(req:Req,res:Res,next:Next){
         try{
             const id:string =req.params.id

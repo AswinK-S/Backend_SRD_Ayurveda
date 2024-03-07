@@ -23,6 +23,7 @@ export class UserRepository implements IUserRepository {
         return await createUser(newUser,this.userModels)
     }
 
+    //block or unblock user
     async blockUser(id:string):Promise<string>{
         return await blckUsrRepo(id)
     }

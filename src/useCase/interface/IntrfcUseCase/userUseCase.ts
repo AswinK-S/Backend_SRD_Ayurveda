@@ -31,7 +31,4 @@ export interface IUserUseCase {
     // userlogin
     login({email,password}:{email:string;password:string},next:Next):Promise <{user:Iuser;tokens:IToken} | void>
 
-
-
-    
 }
