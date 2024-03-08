@@ -12,6 +12,7 @@ import { Encrypted } from "../../../services/hshPswrdCls";
 import { TreatmentRepository } from "../../../database/mongo/repository/treatmentRepo";
 
 //doctor
+import doctorModel from "../../../database/mongo/models/doctorModel";
 import { DoctorRepository } from "../../../database/mongo/repository/doctorRepository";
 import { DoctorController } from "../../../../controllers/doctorController";
 import { DoctorUseCase } from "../../../../useCase/useCases/doctorUseCase";
@@ -30,7 +31,7 @@ const sendMail = new SendMail()
 const otpRepository = new OtpRepository()
 const bcryptService = new Encrypted()
 const jwtToken = new JWTtoken()
-const doctorRepository = new DoctorRepository()
+const doctorRepository = new DoctorRepository(doctorModel)
 
 //admin
 const adminRepository = new AdminRepository(adminModel)
@@ -58,7 +59,10 @@ const adminUseCase = new AdminUseCase(
     userRepository,
 )
 
-const doctorUseCase = new DoctorUseCase()
+const doctorUseCase = new DoctorUseCase(
+    doctorRepository,
+    bcryptService
+    )
 
 const userController = new UserController(userUseCase)
 const adminController = new AdminController(adminUseCase)

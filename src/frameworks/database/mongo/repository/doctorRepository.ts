@@ -1,22 +1,45 @@
 import { IDoctor } from "../../../../@types/entity/doctorEntity";
 import { IDoctorRepository } from "../../../../useCase/interface/repository/doctorRepo";
+import doctorModel from "../models/doctorModel";
+
 import {
     addDoctorRepo,
     isDoctorExist,
-    lstUnlstDoc
+    lstUnlstDoc,
+    findDoctorByEmail
 } from './doctor/index'
 export class DoctorRepository implements IDoctorRepository{
+
+    constructor(private doctorModels: typeof doctorModel){}
 
     //add new doctor
     async addDoctor({name, email, mob, password, address, experience, doctor_id, treatments }: IDoctor): Promise<IDoctor> {
         try{
             console.log('addDoctor repository in frmwrk -----');
-
             return  await addDoctorRepo({name, email, mob, password, address, experience, doctor_id, treatments })
         }catch(err:any){
             console.log('err from clss dctrRepo addDoctr',err.message);
             throw (err)
         }
+    }
+
+    // doctor login 
+    async findByEmail(email:string):Promise<{doctor:IDoctor}|{message?:string}>{
+       try{
+        console.log('dctr Rpstry :',email);
+        let result = await findDoctorByEmail(email,this.doctorModels)
+        let doctor:IDoctor;
+        let message:string;
+        if(result ===null){
+            message='doctor not exist in this mail'
+            return {message}
+        }else{
+           
+            return {doctor:result}
+        }
+       }catch(err){
+        throw (err)
+       }
     }
 
 

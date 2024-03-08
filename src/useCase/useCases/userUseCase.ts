@@ -1,4 +1,4 @@
-import { Res,Req,Next } from "../../frameworks/types/serverPackageTypes"; 
+    import { Res,Req,Next } from "../../frameworks/types/serverPackageTypes"; 
 import { IUserRepository } from "../interface/repository/userRepoIntfc";
 import { ICreateOtp } from "../interface/services/createOtp";  
 import { ISendMail } from "../interface/services/sendMail";
