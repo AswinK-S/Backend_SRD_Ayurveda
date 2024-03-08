@@ -61,7 +61,8 @@ const adminUseCase = new AdminUseCase(
 
 const doctorUseCase = new DoctorUseCase(
     doctorRepository,
-    bcryptService
+    bcryptService,
+    jwtToken
     )
 
 const userController = new UserController(userUseCase)

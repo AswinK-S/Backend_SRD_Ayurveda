@@ -18,6 +18,9 @@ export class DoctorController {
             const {email,password}:{email:string,password:string}=req.body
             console.log('email,password',email ,"  ",password);
             const result = await this.doctorUseCase.login({email,password},next)
+            if(result){
+                res.status(201).json({doctor:result.doctor, token:result.token.accessToken,message:'doctor logged in' })
+            }
         }catch(err:any){
             return new ErrorHandler(500,err.message)
         }

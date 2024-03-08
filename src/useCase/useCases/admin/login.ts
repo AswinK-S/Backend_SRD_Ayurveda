@@ -38,5 +38,6 @@ export const adlogin = async (
 
     } catch (error: any) {
         console.log('admn lgn err ', error.message);
+        throw (error)
     }
 }   

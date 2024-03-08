@@ -1,7 +1,7 @@
 import { IDoctor } from "../../@types/entity/doctorEntity";
 import { Next } from "../../frameworks/types/serverPackageTypes";
 import { IDoctorUseCase } from "../interface/IntrfcUseCase/doctorUseCase";
-import { IToken } from "../interface/services/jwt.types";
+import { IDoctorJwt, IToken } from "../interface/services/jwt.types";
 import { catchError } from "../middleware/catchError";
 
 import { IDoctorRepository } from "../interface/repository/doctorRepo";
@@ -15,13 +15,16 @@ import { IHashPassword } from "../interface/services/hashPassword";
 export class DoctorUseCase implements IDoctorUseCase{
 
     private readonly doctorRepository:IDoctorRepository;
-    private readonly bcrypt:IHashPassword
+    private readonly bcrypt:IHashPassword;
+    private readonly jwtToken:IDoctorJwt;
     constructor(
         doctorRepository:IDoctorRepository,
         bcrypt:IHashPassword,
+        jwtToken:IDoctorJwt
     ){
         this.doctorRepository =doctorRepository;
         this.bcrypt=bcrypt;
+        this.jwtToken=jwtToken
     }
 
     //login
@@ -31,6 +34,7 @@ export class DoctorUseCase implements IDoctorUseCase{
             return await doc_login(
                 this.doctorRepository,
                 this.bcrypt,
+                this.jwtToken,
                 email,
                 password,
                 next)
