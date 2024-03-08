@@ -24,7 +24,7 @@ export const login = async (
         console.log('passwrd cmpr :', result);
         if (!result) return next(new ErrorHandler(400, 'Invalid Password'))
 
-            console.log('user status ----',user.status);
+        if (user.status && result) {
             user.password = ''
             const role = 'user'
             const tokens = await token.createAccessAndRefreshToken(user?._id as string, role as string)
@@ -32,7 +32,10 @@ export const login = async (
                 user,
                 tokens,
             }
-        
+
+        }else{
+            return next(new ErrorHandler(403, "user don't have access"))
+        }
 
 
     } catch (error: any) {

@@ -28,8 +28,11 @@ export const doc_login = async(
             console.log('psswrd mtch---',isPasswordMatch);
 
             if(!isPasswordMatch){
-                return next(new ErrorHandler(400, 'invalid password'))
-            }
+                 next(new ErrorHandler(400, 'invalid password'))
+            }else if( docLogRslt.doctor.status!==true){
+                console.log('status false');
+                  next(new ErrorHandler(403,'doctor is not listed'))
+            }else{
                 docLogRslt.doctor.password= ''
                 const doctor: IDoctor = docLogRslt.doctor;
     
@@ -39,8 +42,9 @@ export const doc_login = async(
                 return {
                     doctor,
                     token,
-                }        
-    
+                }
+            }
+
         } else if ('message' in docLogRslt) {
             console.log('Error message:', docLogRslt.message);
             next (new ErrorHandler(400,docLogRslt))
