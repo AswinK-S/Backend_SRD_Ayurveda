@@ -17,6 +17,7 @@ import {
     block,
     listUnlist,
     getUsersFn,
+    getDoctorsFn,
 } from './admin/index'
 
 import { ITreatmentRepository } from "../interface/repositoryIntrfce/treatmentRepository";
@@ -106,6 +107,17 @@ export class AdminUseCase implements IadminUseCase {
             let result =await listUnlist(this.doctorRepository,id,next)
             console.log('result from useCase--->',result);
             return result
+        }catch(err:any){
+            catchError(err,next)
+        }
+    }
+
+    //get doctors
+    async getDoctorsUseCase(req:Req,next:Next):Promise<IDoctor[]|void>{
+        try{
+            console.log('req in admnUsecase--');
+            let result = await getDoctorsFn(req,this.adminRepository,next)
+            if(result)return result
         }catch(err:any){
             catchError(err,next)
         }

@@ -6,7 +6,7 @@ export const getUsersRepo = async(req:Req,userModels:typeof userModel)=>{
         let  result = await userModels.find({})
         console.log('get users result from repo--' ,result);
         return result
-    }catch(err){
+    }catch(err:any){
         console.log('err in getting users');
         throw (err)
     }

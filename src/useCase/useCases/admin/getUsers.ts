@@ -1,5 +1,6 @@
 import { Next, Req } from "../../../frameworks/types/serverPackageTypes";
 import { IadminRepository } from "../../interface/repositoryIntrfce/adminRepository";
+import ErrorHandler from "../../middleware/errorHandler";
 
 export const getUsersFn = async (req:Req,adminRepository:IadminRepository,next:Next)=>{
     try{
@@ -10,6 +11,7 @@ export const getUsersFn = async (req:Req,adminRepository:IadminRepository,next:N
 
     }catch(err:any){
         console.log('err in fn from uscase');
+        return next (new ErrorHandler(500,err.message))
     }
 
 }

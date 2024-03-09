@@ -46,7 +46,8 @@ export class AdminController {
             return next (new ErrorHandler(500,error.message))
         }
     }
-
+        
+    // ----------------------------------------------------------------------------------------Doctor
 
     //add Doctor
     async addDoc(req:Req,res:Res,next:Next){
@@ -91,11 +92,25 @@ export class AdminController {
         }
     }
 
+    //get doctors
+    async getDoctors(req:Req,res:Res,next:Next){
+        try{
+            console.log('req in contrlr');
+            let result = await this.adminUseCase.getDoctorsUseCase(req,next)
+            console.log('result in contrlr',result);
+            res.status(200).json(result)
+        }catch(err:any){
+            return next(new ErrorHandler(500,err.message))
+        }
+    }
+
+    //------------------------------------------------------------------------------------------------------- user
 
     // block or unblock user 
     async block(req:Req,res:Res,next:Next){
         try{
             const id:string =req.params.id
+            console.log('iiii--',id);
             const usrBlckRslt = await this.adminUseCase.blockUser(id,next)
             console.log('rslt frm cntrlr usrBlkRslt',usrBlckRslt);
             res.status(200).json(usrBlckRslt)

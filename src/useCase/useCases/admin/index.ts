@@ -4,6 +4,7 @@ import { addDoctor } from "./addDoctor";
 import { block } from "./blockUsr";
 import { listUnlist } from "./lstUnlstDoc";
 import { getUsersFn } from "./getUsers";
+import { getDoctorsFn } from "./getDoctors";
 
 export {
     adlogin,
@@ -12,4 +13,5 @@ export {
     block,
     listUnlist,
     getUsersFn,
+    getDoctorsFn
 }

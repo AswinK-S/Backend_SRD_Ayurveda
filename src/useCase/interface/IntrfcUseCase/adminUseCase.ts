@@ -9,14 +9,21 @@ export interface IadminUseCase {
     // adminLogin
     adlogin({email,password}:{email:string,password:string},next:Next):Promise<{admin:Iadmin;tokens:IToken} | void>
 
+//--------------------------------------------------------------------------------------------------------------Treatment
+
     //add treatment
     addTreatment(req:Req,next:Next):Promise<{treatment:ITreatment; message?: string;} | void>
 
+//-----------------------------------------------------------------------------------Doctors
+
     //add Doctor
     addDoctor({name,email,mob,password,address,experience,doctor_id,treatments}:IDoctor,next:Next):Promise <{doctor:IDoctor;message?:string;}| void>
+    //getDoctor
+    getDoctorsUseCase(req:Req,next:Next):Promise<IDoctor[]|void>    
     //list or unlist user
     listUnlstDoc(id:string,next:Next):Promise<string|void>
 
+//--------------------------------------------------------------------------------------users    
 
     // block or unblock user
     blockUser(id:string,next:Next):Promise<string|void>

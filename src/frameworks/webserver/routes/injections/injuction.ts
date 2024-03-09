@@ -34,7 +34,7 @@ const jwtToken = new JWTtoken()
 const doctorRepository = new DoctorRepository(doctorModel)
 
 //admin
-const adminRepository = new AdminRepository(adminModel,userModel)
+const adminRepository = new AdminRepository(adminModel,userModel,doctorModel)
 
 // treatment 
 const treatmetnRepository = new TreatmentRepository()

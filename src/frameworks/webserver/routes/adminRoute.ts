@@ -14,6 +14,8 @@ export function adminRoute(router:Route){
         adminController.add_treatment(req,res,next)
     }))
 
+
+//------------------------------------------------------------------------------Doctors
     // add Doctor
     router.post('/add_Doc',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
         adminController.addDoc(req,res,next)
@@ -24,6 +26,12 @@ export function adminRoute(router:Route){
         adminController.docStatus(req,res,next)
     }))
 
+    // get Doctors
+    router.get('/getDoctors',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
+        adminController.getDoctors(req,res,next)
+    }))
+
+//---------------------------------------------------------------------------------------users
 
     // block/unblock  user route
     router.post('/block_User/:id',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
