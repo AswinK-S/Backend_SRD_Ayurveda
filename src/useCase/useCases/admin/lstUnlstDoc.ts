@@ -1,5 +1,5 @@
 import { Next } from "../../../frameworks/types/serverPackageTypes"
-import { IDoctorRepository } from "../../interface/repository/doctorRepo"
+import { IDoctorRepository } from "../../interface/repositoryIntrfce/doctorRepo"
 
 export const listUnlist = async (doctorRepository:IDoctorRepository, id:string,next:Next)=>{
     try{

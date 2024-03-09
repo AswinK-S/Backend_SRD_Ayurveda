@@ -104,5 +104,18 @@ export class AdminController {
         }
     }
 
+    //get users
+    async getUsers(req:Req,res:Res,next:Next){
+        try{
+            console.log('req----');
+            const result = await this.adminUseCase.getUsersUsecase(req,next)
+            console.log('req result frm cntrlr',result);
+            res.status(200).json(result)
+
+        }catch(err:any){
+            return  next (new ErrorHandler(500,err.message))
+        }
+    }
+
     
 }

@@ -1,5 +1,5 @@
 import { IadminUseCase } from "../interface/IntrfcUseCase/adminUseCase";
-import { IadminRepository } from "../interface/repository/adminRepository";
+import { IadminRepository } from "../interface/repositoryIntrfce/adminRepository";
 import { IHashPassword } from "../interface/services/hashPassword";
 import { IadminJwt, IToken } from "../interface/services/jwt.types";
 import { Iadmin } from "../../@types/entity/adminEntity";
@@ -15,16 +15,18 @@ import {
     addTreatment,
     adlogin,
     block,
-    listUnlist
+    listUnlist,
+    getUsersFn,
 } from './admin/index'
 
-import { ITreatmentRepository } from "../interface/repository/treatmentRepository";
+import { ITreatmentRepository } from "../interface/repositoryIntrfce/treatmentRepository";
 import { ITreatment } from "../../@types/entity/treatmentEntity";
 import { NextFunction } from "express";
 import { IDoctor } from "../../@types/entity/doctorEntity";
-import { IDoctorRepository } from "../interface/repository/doctorRepo";
+import { IDoctorRepository } from "../interface/repositoryIntrfce/doctorRepo";
 
-import { IUserRepository } from "../interface/repository/userRepoIntfc";
+import { IUserRepository } from "../interface/repositoryIntrfce/userRepoIntfc";
+import { Iuser } from "../../@types/entity/userEntity";
 
 export class AdminUseCase implements IadminUseCase {
 
@@ -119,6 +121,20 @@ export class AdminUseCase implements IadminUseCase {
         }
         catch(err:any){
             catchError(err,next)
+        }
+    }
+
+    //get users 
+    async getUsersUsecase(req:Req,next:Next):Promise<Iuser[]| void>{
+        try{
+            console.log('admn useCase-----req:',req);
+            let result = await getUsersFn(req,this.adminRepository,next)
+            console.log('admn useCase-----req:',result);
+            if(result){
+            return result
+            }
+        }catch(error:any){
+         catchError(error,next)
         }
     }
 

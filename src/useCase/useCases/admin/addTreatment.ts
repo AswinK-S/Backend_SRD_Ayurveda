@@ -1,5 +1,5 @@
 import { Next, Req } from "../../../frameworks/types/serverPackageTypes";
-import { ITreatmentRepository } from "../../interface/repository/treatmentRepository";
+import { ITreatmentRepository } from "../../interface/repositoryIntrfce/treatmentRepository";
 import ErrorHandler from "../../middleware/errorHandler";
 
 export const    addTreatment = async (

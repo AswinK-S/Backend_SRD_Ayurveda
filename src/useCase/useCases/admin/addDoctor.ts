@@ -1,5 +1,5 @@
 import { IDoctor } from "../../../@types/entity/doctorEntity";
-import { IDoctorRepository } from "../../interface/repository/doctorRepo";
+import { IDoctorRepository } from "../../interface/repositoryIntrfce/doctorRepo";
 import ErrorHandler from "../../middleware/errorHandler";
 import { Next } from "../../../frameworks/types/serverPackageTypes";
 import { IHashPassword } from "../../interface/services/hashPassword";

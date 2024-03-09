@@ -1,5 +1,5 @@
 import { IDoctor } from "../../../../@types/entity/doctorEntity";
-import { IDoctorRepository } from "../../../../useCase/interface/repository/doctorRepo";
+import { IDoctorRepository } from "../../../../useCase/interface/repositoryIntrfce/doctorRepo";
 import doctorModel from "../models/doctorModel";
 
 import {

@@ -4,7 +4,7 @@ import { IDoctorUseCase } from "../interface/IntrfcUseCase/doctorUseCase";
 import { IDoctorJwt, IToken } from "../interface/services/jwt.types";
 import { catchError } from "../middleware/catchError";
 
-import { IDoctorRepository } from "../interface/repository/doctorRepo";
+import { IDoctorRepository } from "../interface/repositoryIntrfce/doctorRepo";
 
 
 import {

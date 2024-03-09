@@ -1,5 +1,5 @@
 import { ITreatment } from "../../../../@types/entity/treatmentEntity";
-import { ITreatmentRepository } from "../../../../useCase/interface/repository/treatmentRepository";
+import { ITreatmentRepository } from "../../../../useCase/interface/repositoryIntrfce/treatmentRepository";
 
 
 import {

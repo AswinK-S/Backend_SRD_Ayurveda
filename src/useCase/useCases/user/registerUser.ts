@@ -1,9 +1,9 @@
 import { Next } from "../../../frameworks/types/serverPackageTypes";
-import { IUserRepository } from "../../interface/repository/userRepoIntfc";
+import { IUserRepository } from "../../interface/repositoryIntrfce/userRepoIntfc";
 import { ICreateOtp } from "../../interface/services/createOtp";
 import { ISendMail } from "../../interface/services/sendMail";
 import ErrorHandler from "../../middleware/errorHandler";
-import { IOtpRepository } from "../../interface/repository/otpRepository";
+import { IOtpRepository } from "../../interface/repositoryIntrfce/otpRepository";
 import { IHashPassword } from "../../interface/services/hashPassword";
 import { IJwt } from "../../interface/services/jwt.types";
 

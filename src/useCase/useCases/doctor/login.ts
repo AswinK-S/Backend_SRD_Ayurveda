@@ -1,7 +1,7 @@
 import { IDoctor } from "../../../@types/entity/doctorEntity";
 import { Next } from "../../../frameworks/types/serverPackageTypes";
 import { IDoctorJwt, IToken } from "../../interface/services/jwt.types";
-import { IDoctorRepository } from "../../interface/repository/doctorRepo";
+import { IDoctorRepository } from "../../interface/repositoryIntrfce/doctorRepo";
 import { IHashPassword } from "../../interface/services/hashPassword";
 import ErrorHandler from "../../middleware/errorHandler";
 

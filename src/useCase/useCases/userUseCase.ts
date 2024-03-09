@@ -1,8 +1,8 @@
     import { Res,Req,Next } from "../../frameworks/types/serverPackageTypes"; 
-import { IUserRepository } from "../interface/repository/userRepoIntfc";
+import { IUserRepository } from "../interface/repositoryIntrfce/userRepoIntfc";
 import { ICreateOtp } from "../interface/services/createOtp";  
 import { ISendMail } from "../interface/services/sendMail";
-import { IOtpRepository } from "../interface/repository/otpRepository";
+import { IOtpRepository } from "../interface/repositoryIntrfce/otpRepository";
 
 import { IUserUseCase } from "../interface/IntrfcUseCase/userUseCase";
 import { Iuser } from "../../@types/entity/userEntity";

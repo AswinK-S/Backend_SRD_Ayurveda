@@ -1,7 +1,7 @@
 import { Iadmin } from "../../../@types/entity/adminEntity"
 import { IadminJwt } from "../../interface/services/jwt.types"
 import { IToken } from "../../interface/services/jwt.types"
-import { IadminRepository } from "../../interface/repository/adminRepository"
+import { IadminRepository } from "../../interface/repositoryIntrfce/adminRepository"
 import { IHashPassword } from "../../interface/services/hashPassword"
 import { Next } from "../../../frameworks/types/serverPackageTypes"
 import ErrorHandler from "../../middleware/errorHandler"

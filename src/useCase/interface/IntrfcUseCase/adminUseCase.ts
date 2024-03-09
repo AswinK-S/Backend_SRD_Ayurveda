@@ -1,4 +1,5 @@
 import { Iadmin } from "../../../@types/entity/adminEntity";
+import { Iuser } from "../../../@types/entity/userEntity";
 import { Next ,Req} from "../../../frameworks/types/serverPackageTypes";
 import { IToken } from "../services/jwt.types";
 import { ITreatment } from "../../../@types/entity/treatmentEntity";
@@ -19,7 +20,8 @@ export interface IadminUseCase {
 
     // block or unblock user
     blockUser(id:string,next:Next):Promise<string|void>
-
+    //get users
+    getUsersUsecase(req:Req,next:Next):Promise<Iuser[]|void>
 
 
 }

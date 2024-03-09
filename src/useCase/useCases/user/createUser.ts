@@ -1,5 +1,5 @@
-import { IOtpRepository } from "../../interface/repository/otpRepository";
-import { IUserRepository } from "../../interface/repository/userRepoIntfc";
+import { IOtpRepository } from "../../interface/repositoryIntrfce/otpRepository";
+import { IUserRepository } from "../../interface/repositoryIntrfce/userRepoIntfc";
 import { Iuser } from "../../../@types/entity/userEntity";
 import { IJwt } from "../../interface/services/jwt.types";
 import { Next } from "../../../frameworks/types/serverPackageTypes";

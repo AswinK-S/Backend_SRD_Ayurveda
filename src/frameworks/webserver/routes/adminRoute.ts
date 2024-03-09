@@ -30,7 +30,10 @@ export function adminRoute(router:Route){
         adminController.block(req,res,next)
     }))
 
-    
+    //get users
+    router.get('/users',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
+        adminController.getUsers(req,res,next)
+    }))
 
     return router
 }

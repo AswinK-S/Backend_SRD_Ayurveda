@@ -1,5 +1,5 @@
 import { Next } from "../../../frameworks/types/serverPackageTypes"
-import { IUserRepository } from "../../interface/repository/userRepoIntfc"
+import { IUserRepository } from "../../interface/repositoryIntrfce/userRepoIntfc"
 import ErrorHandler from "../../middleware/errorHandler"
 
 export const block = async(userRepository:IUserRepository,id:string,next:Next)=>{
