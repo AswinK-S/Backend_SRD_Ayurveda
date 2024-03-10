@@ -12,8 +12,9 @@ export class TreatmentRepository implements ITreatmentRepository {
 
 
     //addnewTreatment
-     async addTreatment(name: string, subTreatments: string[]): Promise<ITreatment> {
+     async addTreatment(name: string, subTreatments:[]): Promise<ITreatment> {
         try{
+            console.log('name , subtr frm trtmnt repo cls--',name,subTreatments);
             return await addTreatment(name,subTreatments)
         }catch(err){
             throw(err)

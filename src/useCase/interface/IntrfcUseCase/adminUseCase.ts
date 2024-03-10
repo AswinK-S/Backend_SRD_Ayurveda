@@ -17,7 +17,7 @@ export interface IadminUseCase {
 //-----------------------------------------------------------------------------------Doctors
 
     //add Doctor
-    addDoctor({name,email,mob,password,address,experience,doctor_id,treatments}:IDoctor,next:Next):Promise <{doctor:IDoctor;message?:string;}| void>
+    addDoctor({name,email,mob,password,address,experience,doctor_id,treatment,subTreatment}:IDoctor,next:Next):Promise <{doctor:IDoctor;message?:string;}| void>
     //getDoctor
     getDoctorsUseCase(req:Req,next:Next):Promise<IDoctor[]|void>    
     //list or unlist user

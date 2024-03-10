@@ -9,10 +9,8 @@ const doctorSchema: Schema<IDoctor> = new mongoose.Schema({
     address: { type: String, required: true },
     experience: { type: String, required: true },
     doctor_id: { type: String, required: true },
-    treatments:[{
-        treatment: { type: Schema.Types.ObjectId, ref: 'Treatment' },
-        subTreatment: { type: String, required: true }
-    }], 
+    treatment:{type:String,required:true},
+    subTreatment:{type:String,required:true},
     status: { type: Boolean },
     isVerified: { type: Boolean },
 })
@@ -21,8 +19,3 @@ const doctorModel:Model<IDoctor> = mongoose.model('Doctor',doctorSchema)
 export default doctorModel
 
 
-
-// [{
-//     treatment: { type: Schema.Types.ObjectId, ref: 'Treatment' }, 
-//     subTreatments: [String] 
-// }]

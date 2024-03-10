@@ -9,8 +9,8 @@ import { ITreatment } from "../../../@types/entity/treatmentEntity";
 export const  addDoctor =async(
     doctorRepository:IDoctorRepository,
     bcrypt:IHashPassword,
-    { name, email, mob, password, address, experience, doctor_id, treatments }:
-      {name:string,email:string,mob:number,password:string | Promise<string >,address:string,experience:string,doctor_id:string,treatments:ITreatment[]} ,
+    { name, email, mob, password, address, experience, doctor_id, treatment,subTreatment }:
+      {name:string,email:string,mob:number,password:string | Promise<string >,address:string,experience:string,doctor_id:string,treatment:string,subTreatment:string} ,
     next:Next
     )=>{
         try{
@@ -18,9 +18,9 @@ export const  addDoctor =async(
             const isDocExist = await doctorRepository.isDoctorExist(email)
             console.log('isDoc exist :',isDocExist);
             if(isDocExist ==='doctor not exist in this email'){
-                const hashedPassword = bcrypt.createHash(password as string)
+                const hashedPassword = await bcrypt.createHash(password as string)
                 password = hashedPassword
-                const result = await doctorRepository.addDoctor({name, email, mob, password, address, experience, doctor_id, treatments})
+                const result = await doctorRepository.addDoctor({name, email, mob, password, address, experience, doctor_id, treatment,subTreatment})
                 
                 return{doctor:result,message:'added new doctor'}
             }else{

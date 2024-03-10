@@ -9,7 +9,9 @@ export const    addTreatment = async (
 ) => {
     try {
         console.log('add treatment useCase :', req);
-        const { treatmentName, subTreatments }:any = req;
+        const { name, subTreatments }:any = req;
+        console.log('treatmnt Nme frm trtmnt UseCse',name);
+        const treatmentName:string = name
         const treatmentExist = await treatmentRepository.existTreatment(treatmentName, subTreatments)
         console.log('treatmentEsixt frm add trtmnt :',treatmentExist);
         if (treatmentExist === 'not exist') {
@@ -42,6 +44,7 @@ export const    addTreatment = async (
             return { treatment:treatmentExist, message: 'Treatment and sub-treatment already exist' };
         }
     } catch (err: any) {
+        console.log('err---------',err.message);
         return next(new ErrorHandler(500, err.message))
     }
 }

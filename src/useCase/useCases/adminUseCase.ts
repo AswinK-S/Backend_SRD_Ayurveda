@@ -89,10 +89,10 @@ export class AdminUseCase implements IadminUseCase {
 // --------------------------------------------------------------------------------------------------------doctor
 
    //add doctor
-   async addDoctor({ name, email, mob, password, address, experience, doctor_id, treatments }: IDoctor, next: NextFunction): Promise<void | { doctor: IDoctor; message?: string}> {
+   async addDoctor({ name, email, mob, password, address, experience, doctor_id, treatment,subTreatment }: IDoctor, next: NextFunction): Promise<void | { doctor: IDoctor; message?: string}> {
     try{
         console.log('in the adminUseCase');
-        const addDocResult = await addDoctor(this.doctorRepository,this.bcrypt,{ name, email, mob, password, address, experience, doctor_id, treatments },next)
+        const addDocResult = await addDoctor(this.doctorRepository,this.bcrypt,{ name, email, mob, password, address, experience, doctor_id, treatment,subTreatment },next)
         return addDocResult
     }catch(err:any){
         catchError(err,next)

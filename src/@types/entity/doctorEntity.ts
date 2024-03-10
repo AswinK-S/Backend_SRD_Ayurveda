@@ -9,7 +9,8 @@ export interface IDoctor {
     address:string,
     experience:string,
     doctor_id:string,
-    treatments:ITreatment[],
+    treatment:string,
+    subTreatment:string,
     status?:boolean,
     isVerified?:boolean
 }

@@ -60,15 +60,17 @@ export class AdminController {
                 address,
                 experience,
                 doctor_id,
-                treatments
+                treatment,
+                subTreatment,
             }:IDoctor=req.body
 
             console.log('req body',req.body);
-            let docResult = await this.adminUseCase.addDoctor({name,email,mob,password,address,experience,doctor_id,treatments},next)
+            let docResult = await this.adminUseCase.addDoctor({name,email,mob,password,address,experience,doctor_id,treatment,subTreatment},next)
             console.log('docResult from controller >',docResult);
             if(docResult){
                 res.status(200).json(docResult)
-            }else if (docResult === undefined){
+            }
+            else if (docResult === undefined){
                 console.log('doctor exists');
                 res.status(200).json('doctor exists')
             }

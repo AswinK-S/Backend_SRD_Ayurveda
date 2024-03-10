@@ -1,9 +1,10 @@
 import { ITreatment } from "../../../../../@types/entity/treatmentEntity";
 import treatmentModel from "../../models/treatmentModel";
 
-export const addTreatment = async (name:string,subTreatments:string[]):Promise<ITreatment> =>{
+export const addTreatment = async (name:string,subTreatments:[]):Promise<ITreatment> =>{
     try {
         console.log('addTreatmnt reopo in mongo ',subTreatments);
+        console.log('treatment name frm repo--',name);
         let newTreatment = await treatmentModel.create({name,subTreatments})
         console.log('new Treatment :',newTreatment);
         return newTreatment.toObject() as ITreatment;

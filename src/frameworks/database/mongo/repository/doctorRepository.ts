@@ -13,10 +13,10 @@ export class DoctorRepository implements IDoctorRepository{
     constructor(private doctorModels: typeof doctorModel){}
 
     //add new doctor
-    async addDoctor({name, email, mob, password, address, experience, doctor_id, treatments }: IDoctor): Promise<IDoctor> {
+    async addDoctor({name, email, mob, password, address, experience, doctor_id, treatment,subTreatment }: IDoctor): Promise<IDoctor> {
         try{
             console.log('addDoctor repository in frmwrk -----');
-            return  await addDoctorRepo({name, email, mob, password, address, experience, doctor_id, treatments })
+            return  await addDoctorRepo({name, email, mob, password, address, experience, doctor_id, treatment,subTreatment })
         }catch(err:any){
             console.log('err from clss dctrRepo addDoctr',err.message);
             throw (err)
