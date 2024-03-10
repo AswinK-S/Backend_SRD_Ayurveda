@@ -31,12 +31,14 @@ export class AdminController {
         }
     }
 
+//-----------------------------------------------------------------------------------------------------Treatments    
+
 
     //add Treatment
     async add_treatment(req:Req,res:Res,next:Next){
         try{
             console.log('req from admnCntrlr addTrtmnt',req.body);
-            let result = await this.adminUseCase.addTreatment(req.body,next)
+            const result = await this.adminUseCase.addTreatment(req.body,next)
             console.log('result of admnCntrlr :',result);
             if(result){
                 res.status(200).json(result)
@@ -44,6 +46,18 @@ export class AdminController {
 
         }catch(error:any){
             return next (new ErrorHandler(500,error.message))
+        }
+    }
+
+    //get Treatments
+    async treatments(req:Req,res:Res,next:Next){
+        try{
+            console.log('req in cntrlr');
+            const result = await this.adminUseCase.getTreatmentUsecase(req,next)
+            res.status(200).json(result)
+            
+        }catch(err:any){
+            return next (new ErrorHandler(500,err.message))
         }
     }
         

@@ -10,7 +10,7 @@ import { Encrypted } from "../../../services/hshPswrdCls";
 
 //treatment
 import { TreatmentRepository } from "../../../database/mongo/repository/treatmentRepo";
-
+import treatmentModel from "../../../database/mongo/models/treatmentModel";
 //doctor
 import doctorModel from "../../../database/mongo/models/doctorModel";
 import { DoctorRepository } from "../../../database/mongo/repository/doctorRepository";
@@ -34,7 +34,7 @@ const jwtToken = new JWTtoken()
 const doctorRepository = new DoctorRepository(doctorModel)
 
 //admin
-const adminRepository = new AdminRepository(adminModel,userModel,doctorModel)
+const adminRepository = new AdminRepository(adminModel,userModel,doctorModel,treatmentModel)
 
 // treatment 
 const treatmetnRepository = new TreatmentRepository()

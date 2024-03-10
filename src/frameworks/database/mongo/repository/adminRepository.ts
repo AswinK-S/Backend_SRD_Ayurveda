@@ -6,12 +6,15 @@ import {
     findAdminByEmail,
     getUsersRepo,
     getDoctorsRepo,
+    getTreatmentsRepo,
 } from './admin/index'
 import { Req } from "../../../types/serverPackageTypes";
 import { Iuser } from "../../../../@types/entity/userEntity";
 import userModel from "../models/userModel";
 import doctorModel from "../models/doctorModel";
 import { IDoctor } from "../../../../@types/entity/doctorEntity";
+import { ITreatment } from "../../../../@types/entity/treatmentEntity";
+import treatmentModel from "../models/treatmentModel";
 
 
 export class AdminRepository implements IadminRepository {
@@ -20,6 +23,7 @@ export class AdminRepository implements IadminRepository {
         private adminModels: typeof adminModel,
         private userModels: typeof userModel,
         private doctorModels: typeof doctorModel,
+        private treatmentModels: typeof treatmentModel
     ) { }
 
     async findAdminByEmail(email: string): Promise<Iadmin | null> {
@@ -33,10 +37,19 @@ export class AdminRepository implements IadminRepository {
 
     async getUsersAdmnRepo(req: Req): Promise<Iuser[] | null> {
         try {
-            let users = await getUsersRepo(req, this.userModels)
+            const users = await getUsersRepo(req, this.userModels)
             return users
         } catch (err: any) {
             throw (err)
+        }
+    }
+
+    async getTretmentsAdmnRepo(req:Req):Promise<ITreatment[]|null>{
+        try {
+            const treatments = await getTreatmentsRepo(req,this.treatmentModels)
+            return treatments
+        } catch (error) {
+           throw (error) 
         }
     }
 

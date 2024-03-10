@@ -13,6 +13,8 @@ export interface IadminUseCase {
 
     //add treatment
     addTreatment(req:Req,next:Next):Promise<{treatment:ITreatment; message?: string;} | void>
+    //get treatments
+    getTreatmentUsecase(req:Req,next:Next):Promise<ITreatment[]|void>
 
 //-----------------------------------------------------------------------------------Doctors
 

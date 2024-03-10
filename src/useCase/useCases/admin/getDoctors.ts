@@ -10,6 +10,5 @@ export const getDoctorsFn =async(req:Req,adminRepository:IadminRepository,next:N
     }catch(err:any){
         console.log('err in getDoctorFn',err.message);
         return next (new ErrorHandler(500,err.message))
-
     }
 }
