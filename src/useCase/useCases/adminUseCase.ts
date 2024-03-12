@@ -29,6 +29,7 @@ import { IDoctorRepository } from "../interface/repositoryIntrfce/doctorRepo";
 
 import { IUserRepository } from "../interface/repositoryIntrfce/userRepoIntfc";
 import { Iuser } from "../../@types/entity/userEntity";
+import { ISendMail } from "../interface/services/sendMail";
 
 export class AdminUseCase implements IadminUseCase {
 
@@ -38,6 +39,7 @@ export class AdminUseCase implements IadminUseCase {
     private treatmentRepository: ITreatmentRepository;
     private doctorRepository:IDoctorRepository;
     private userRepository:IUserRepository;
+    private sendMail:ISendMail;
 
     constructor(
         adminRepository: IadminRepository,
@@ -46,6 +48,7 @@ export class AdminUseCase implements IadminUseCase {
         treatmentRepository: ITreatmentRepository,
         doctorRepository:IDoctorRepository,
         userRepository:IUserRepository,
+        sendMail:ISendMail,
     ) {
         this.adminRepository = adminRepository;
         this.bcrypt = bcrypt;
@@ -53,6 +56,7 @@ export class AdminUseCase implements IadminUseCase {
         this.treatmentRepository = treatmentRepository;
         this.doctorRepository = doctorRepository;
         this.userRepository= userRepository;
+        this.sendMail = sendMail;
 
     }
 
@@ -104,7 +108,7 @@ export class AdminUseCase implements IadminUseCase {
    async addDoctor({ name, email, mob, password, address, experience, doctor_id, treatment,subTreatment }: IDoctor, next: NextFunction): Promise<void | { doctor: IDoctor; message?: string}> {
     try{
         console.log('in the adminUseCase');
-        const addDocResult = await addDoctor(this.doctorRepository,this.bcrypt,{ name, email, mob, password, address, experience, doctor_id, treatment,subTreatment },next)
+        const addDocResult = await addDoctor(this.doctorRepository,this.sendMail,{ name, email, mob, password, address, experience, doctor_id, treatment,subTreatment },next)
         return addDocResult
     }catch(err:any){
         catchError(err,next)

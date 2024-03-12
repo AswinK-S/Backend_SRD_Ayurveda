@@ -85,7 +85,7 @@ export class AdminController {
                 res.status(200).json(docResult)
             }
             else if (docResult === undefined){
-                console.log('doctor exists');
+                console.log('doctor exists ');
                 res.status(200).json('doctor exists')
             }
 

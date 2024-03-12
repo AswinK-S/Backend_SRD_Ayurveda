@@ -3,8 +3,8 @@ import mongoose, { Model, Schema } from "mongoose";
 
 const doctorSchema: Schema<IDoctor> = new mongoose.Schema({
     name: { type: String, required: true },
-    email: { type: String, required: true },
-    mob: { type: Number, required: true },
+    email: { type: String, required: true,unique: true },
+    mob: { type: Number, required: true,unique: true },
     password: { type: String, required: true },
     address: { type: String, required: true },
     experience: { type: String, required: true },

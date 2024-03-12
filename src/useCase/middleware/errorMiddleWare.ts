@@ -12,11 +12,14 @@ export const errorMiddleware =(err:any , req:Req, res:Res, next:Next) =>{
     //     const message = `Resource not found, invalid:${err.path}`;
     //     err = new ErrorResponse(400, message);
     //   }
-    //   //duplicate key error =>for authentication
-    //   if (err.name === 11000) {
-    //     const message = `Duplicate ${Object.keys(err.keyValue)} entered`;
-    //     err = new ErrorResponse(400, message);
-    //   }
+
+      //duplicate key error =>for authentication
+      if (err.name === 11000) {
+        const message = `Duplicate ${Object.keys(err.keyValue)} entered`;
+        err = new ErrorResponse(400, message);
+      }
+
+      
     //   //wrong jwt error
     //   if (err.name === "jsonWebTokenError") {
     //     const message = `json web token is invalid,try again`;

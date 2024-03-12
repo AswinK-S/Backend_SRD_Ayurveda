@@ -6,7 +6,8 @@ import {
     addDoctorRepo,
     isDoctorExist,
     lstUnlstDoc,
-    findDoctorByEmail
+    findDoctorByEmail,
+    isDocExistInMob
 } from './doctor/index'
 export class DoctorRepository implements IDoctorRepository{
 
@@ -43,7 +44,7 @@ export class DoctorRepository implements IDoctorRepository{
     }
 
 
-    //check if the doctor already exists in the database
+    //check if the doctor already exists in this email
     async isDoctorExist(email: string):Promise<IDoctor|string > {
         try{
             return await isDoctorExist(email)
@@ -54,6 +55,17 @@ export class DoctorRepository implements IDoctorRepository{
         }
 
     }
+
+    //check if the doctor already exists in this mob
+    async isDocExistInMob(mob:number):Promise<IDoctor|string>{
+        try{
+            return await isDocExistInMob(mob)
+        }catch(err:any){
+            console.log('err frm clss dctr repo',err.message);
+            throw(err)
+        }
+    }
+
 
     // list or unlist doctor 
     async list_UnlistDoc(id:string):Promise<string>{

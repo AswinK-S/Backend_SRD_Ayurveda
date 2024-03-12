@@ -9,4 +9,4 @@ export const findDoctorByEmail = async(email:string,doctorModels:typeof doctorMo
         console.log('db err--',err.message);
         throw (err)
     }
-}
+}   

@@ -28,7 +28,7 @@ export class DoctorUseCase implements IDoctorUseCase{
     }
 
     //login
-    async login({email,password}:{email:string; password:string},next:Next):Promise<{doctor:IDoctor;token:IToken}|void>{
+    async login({email,password,mob}:{email:string; password:string,mob:number},next:Next):Promise<{doctor:IDoctor;token:IToken}|void>{
         try{
             console.log('useCase--',email, password);
             return await doc_login(

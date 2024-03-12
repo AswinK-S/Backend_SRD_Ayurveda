@@ -57,6 +57,7 @@ const adminUseCase = new AdminUseCase(
     treatmetnRepository,
     doctorRepository,
     userRepository,
+    sendMail
 )
 
 const doctorUseCase = new DoctorUseCase(
@@ -65,7 +66,7 @@ const doctorUseCase = new DoctorUseCase(
     jwtToken
     )
 
-const userController = new UserController(userUseCase)
+const userController = new UserController(userUseCase,adminUseCase)
 const adminController = new AdminController(adminUseCase)
 const doctorController = new DoctorController(doctorUseCase)
 

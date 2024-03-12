@@ -5,6 +5,12 @@ import { catchAsyncErrors } from "../middleware/catchAsyncErrors";
 
 export function userRoute(router:Route){
 
+    //treatment Route 
+    router.get('/userTreatments',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
+        console.log('trt--');
+        userController.treatments(req,res,next)
+    }))
+
     //signup Route
     router.post('/signup',catchAsyncErrors((req: Req, res: Res, next: Next)=>{
         console.log('user data came from front end');
