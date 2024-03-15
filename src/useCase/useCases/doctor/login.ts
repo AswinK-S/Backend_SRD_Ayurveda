@@ -24,8 +24,19 @@ export const doc_login = async(
             const hashPassword = docLogRslt.doctor.password
             console.log('entered psswrd--',password);
 
-            const isPasswordMatch = await bcrypt.comparePassword(password, hashPassword);
-            console.log('psswrd mtch---',isPasswordMatch);
+            const bcryptRegex = /^\$2[aby]\$.{56}$/;
+            let isPasswordMatch:boolean= false
+
+            if(bcryptRegex.test(hashPassword)){
+                isPasswordMatch = await bcrypt.comparePassword(password, hashPassword);
+                console.log('psswrd mtch---',isPasswordMatch);
+            }else{
+                isPasswordMatch = (hashPassword===password)?true:false
+                console.log('pswrdMtch psswrd not hshed case ---',isPasswordMatch);
+                isPasswordMatch
+            }
+            
+           
 
             if(!isPasswordMatch){
                  next(new ErrorHandler(400, 'invalid password'))
@@ -35,7 +46,7 @@ export const doc_login = async(
             }else{
                 docLogRslt.doctor.password= ''
                 const doctor: IDoctor = docLogRslt.doctor;
-    
+                console.log('login succs');
                 const role='doctor'
                 const token = await tokens.createAccessAndRefreshToken(docLogRslt.doctor?._id as string,role as string)
                 

@@ -10,8 +10,6 @@ import { userRoute } from "../routes/userRoute";
 import { adminRoute } from "../routes/adminRoute";
 import { doctorRoute } from "../routes/doctorRoute";
 
-import { Routes } from "react-router-dom";
-import { url } from "inspector";
 
 const app: Express = express()
 

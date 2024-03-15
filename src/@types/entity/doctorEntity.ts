@@ -13,4 +13,5 @@ export interface IDoctor {
     subTreatment:string,
     status?:boolean,
     isVerified?:boolean
+    image?:string
 }

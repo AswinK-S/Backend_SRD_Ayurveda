@@ -25,4 +25,15 @@ export class DoctorController {
             return new ErrorHandler(500,err.message)
         }
     }
+
+    async profileImg(req:Req,res:Res,next:Next){
+        try {
+            console.log('req--',req.file);
+            const image:any =req.file
+            const result = await this.doctorUseCase.uploadProfileImage(image,next)
+
+        } catch (error:any  ) {
+            return next (new ErrorHandler(500,error.message))
+        }
+    }
 }

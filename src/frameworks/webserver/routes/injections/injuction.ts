@@ -7,7 +7,7 @@ import { SendMail } from "../../../services/sendMail";
 import { OtpRepository } from "../../../database/mongo/repository/otp.repository";
 import { JWTtoken } from "../../../services/jwt";
 import { Encrypted } from "../../../services/hshPswrdCls";
-
+import { Cloudinary } from "../../../utils/cloudinaryRepo";
 //treatment
 import { TreatmentRepository } from "../../../database/mongo/repository/treatmentRepo";
 import treatmentModel from "../../../database/mongo/models/treatmentModel";
@@ -24,6 +24,8 @@ import { AdminController } from "../../../../controllers/adminController";
 import { AdminRepository } from "../../../database/mongo/repository/adminRepository";
 import { AdminUseCase } from "../../../../useCase/useCases/adminUseCase";
 
+const cloudinary = new Cloudinary()
+
 //user
 const userRepository = new UserRepository(userModel)
 const generateOtp = new GenerateOtp()
@@ -32,6 +34,7 @@ const otpRepository = new OtpRepository()
 const bcryptService = new Encrypted()
 const jwtToken = new JWTtoken()
 const doctorRepository = new DoctorRepository(doctorModel)
+
 
 //admin
 const adminRepository = new AdminRepository(adminModel,userModel,doctorModel,treatmentModel)
@@ -63,7 +66,8 @@ const adminUseCase = new AdminUseCase(
 const doctorUseCase = new DoctorUseCase(
     doctorRepository,
     bcryptService,
-    jwtToken
+    jwtToken,
+    cloudinary
     )
 
 const userController = new UserController(userUseCase,adminUseCase)

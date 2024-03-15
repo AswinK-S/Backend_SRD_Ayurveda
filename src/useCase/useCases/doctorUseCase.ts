@@ -5,6 +5,7 @@ import { IDoctorJwt, IToken } from "../interface/services/jwt.types";
 import { catchError } from "../middleware/catchError";
 
 import { IDoctorRepository } from "../interface/repositoryIntrfce/doctorRepo";
+import ICloudinaryRepository from "../interface/repositoryIntrfce/cloudinaryRepo";
 
 
 import {
@@ -17,14 +18,17 @@ export class DoctorUseCase implements IDoctorUseCase{
     private readonly doctorRepository:IDoctorRepository;
     private readonly bcrypt:IHashPassword;
     private readonly jwtToken:IDoctorJwt;
+    private readonly cloudinary:ICloudinaryRepository;
     constructor(
         doctorRepository:IDoctorRepository,
         bcrypt:IHashPassword,
-        jwtToken:IDoctorJwt
+        jwtToken:IDoctorJwt,
+        cloudinay:ICloudinaryRepository
     ){
         this.doctorRepository =doctorRepository;
         this.bcrypt=bcrypt;
         this.jwtToken=jwtToken
+        this.cloudinary=cloudinay
     }
 
     //login
@@ -40,6 +44,16 @@ export class DoctorUseCase implements IDoctorUseCase{
                 next)
         }catch(err:unknown){
             catchError(err,next)
+        }
+    }
+
+    async uploadProfileImage(image:any,next:Next):Promise<any >{
+        try {
+            console.log('---useCase image',image);
+            const response = await   this.cloudinary.saveToCloudinary(image)
+            console.log('response in usecase',response);
+        } catch (error) {
+            catchError(error,next)
         }
     }
 }
