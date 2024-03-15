@@ -9,7 +9,8 @@ import ICloudinaryRepository from "../interface/repositoryIntrfce/cloudinaryRepo
 
 
 import {
-    doc_login
+    doc_login,
+    updateProPic
 } from './doctor/index'
 import { IHashPassword } from "../interface/services/hashPassword";
 
@@ -47,11 +48,15 @@ export class DoctorUseCase implements IDoctorUseCase{
         }
     }
 
-    async uploadProfileImage(image:any,next:Next):Promise<any >{
+    async uploadProfileImage(image:any,id:string,next:Next):Promise<any|IDoctor >{
         try {
             console.log('---useCase image',image);
             const response = await   this.cloudinary.saveToCloudinary(image)
             console.log('response in usecase',response);
+            if(response){
+                const res = await updateProPic(this.doctorRepository,response,id,next)
+                return res
+            }
         } catch (error) {
             catchError(error,next)
         }

@@ -63,6 +63,6 @@ export const doc_login = async(
         
 
     }catch(err){
-
+        throw (err)
     }
 }

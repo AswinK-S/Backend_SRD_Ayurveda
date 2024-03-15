@@ -30,8 +30,11 @@ export class DoctorController {
         try {
             console.log('req--',req.file);
             const image:any =req.file
-            const result = await this.doctorUseCase.uploadProfileImage(image,next)
-
+            const id:string =req.body.id
+            console.log('req body',req.body," id >",id); 
+            const result = await this.doctorUseCase.uploadProfileImage(image,id,next)
+            console.log('reslt in cntrlr',result);
+            res.status(200).json(result.image)
         } catch (error:any  ) {
             return next (new ErrorHandler(500,error.message))
         }

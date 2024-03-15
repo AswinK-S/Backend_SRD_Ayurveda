@@ -7,7 +7,8 @@ import {
     isDoctorExist,
     lstUnlstDoc,
     findDoctorByEmail,
-    isDocExistInMob
+    isDocExistInMob,
+    uploadImgLink,
 } from './doctor/index'
 export class DoctorRepository implements IDoctorRepository{
 
@@ -76,6 +77,17 @@ export class DoctorRepository implements IDoctorRepository{
             return result
         }catch(err:any){
             throw(err)
+        }
+    }
+
+    async updateImage(image:string,id:string):Promise<IDoctor|void>{
+        try {
+            console.log('img link in repo',image);
+            const res = await uploadImgLink(image,id)
+            console.log('res frm repo----',res);
+            return res
+        } catch (err:any) {
+            throw (err)
         }
     }
 }

@@ -8,4 +8,5 @@ export interface    IDoctorRepository{
     isDocExistInMob(mob:number):Promise<IDoctor|string>
     list_UnlistDoc(id:string):Promise<string>
     findByEmail(email:string):Promise<{doctor:IDoctor}|{message?:string}>
+    updateImage(image:string,id:string):Promise<IDoctor|void>
 }
