@@ -58,7 +58,8 @@ export class DoctorUseCase implements IDoctorUseCase{
 
                 return res
             }
-        } catch (error) {
+        } catch (error:any) {
+            console.log('err frm useCase--',error.message);
             catchError(error,next)
         }
     }
