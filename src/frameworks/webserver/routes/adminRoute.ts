@@ -18,6 +18,12 @@ export function adminRoute(router:Route){
     router.get('/treatments',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
         adminController.treatments(req,res,next)
     }))
+
+    //change treatment status
+    router.patch('/trtMntStatus/:id',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
+        adminController.treatmentStatus(req,res,next)
+    }))
+
 //------------------------------------------------------------------------------Doctors
     // add Doctor
     router.post('/add_Doc',catchAsyncErrors((req:Req,res:Res,next:Next)=>{

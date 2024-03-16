@@ -15,6 +15,8 @@ export interface IadminUseCase {
     addTreatment(req:Req,next:Next):Promise<{treatment:ITreatment; message?: string;} | void>
     //get treatments
     getTreatmentUsecase(req:Req,next:Next):Promise<ITreatment[]|void>
+    //change treatment status
+    trtmntStsUseCase(id:string):Promise<ITreatment|void>
 
 //-----------------------------------------------------------------------------------Doctors
 

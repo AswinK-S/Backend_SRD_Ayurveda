@@ -51,10 +51,11 @@ export class DoctorUseCase implements IDoctorUseCase{
     async uploadProfileImage(image:any,id:string,next:Next):Promise<any|IDoctor >{
         try {
             console.log('---useCase image',image);
-            const response = await   this.cloudinary.saveToCloudinary(image)
+            const response = await   this.cloudinary.saveToCloudinary(image,'projectSRd')
             console.log('response in usecase',response);
             if(response){
                 const res = await updateProPic(this.doctorRepository,response,id,next)
+
                 return res
             }
         } catch (error) {

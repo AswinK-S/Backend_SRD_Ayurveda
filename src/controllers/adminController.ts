@@ -61,6 +61,19 @@ export class AdminController {
         }
     }
         
+    // change Treatment status
+    async treatmentStatus(req:Req,res:Res,next:Next){
+        try{
+            console.log('contrlr--',req.body);
+            const id:string =req.params.id
+            console.log('id--',id);
+            const result = await this.adminUseCase.trtmntStsUseCase(id)
+            res.status(200).json(result)
+        }catch(err:any){
+            return next (new ErrorHandler(500,err.message))
+        }
+    } 
+    
     // ----------------------------------------------------------------------------------------Doctor
 
     //add Doctor

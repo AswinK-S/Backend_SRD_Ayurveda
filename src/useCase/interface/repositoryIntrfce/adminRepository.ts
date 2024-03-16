@@ -9,4 +9,5 @@ export interface IadminRepository{
     getUsersAdmnRepo(req:Req):Promise<Iuser[]|null>
     getDoctorsAdmnRepo(req: Req): Promise < IDoctor[] | null > 
     getTretmentsAdmnRepo(req:Req):Promise<ITreatment[]|null>
+    getTrtmntStsAdmnRep(id:string):Promise<ITreatment | void>
 }

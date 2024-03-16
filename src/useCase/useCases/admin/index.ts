@@ -6,6 +6,7 @@ import { listUnlist } from "./lstUnlstDoc";
 import { getUsersFn } from "./getUsers";
 import { getDoctorsFn } from "./getDoctors";
 import { getTreatmentFn } from "./getTreatment";
+import { trtmntStsFn } from "./trtmntStatus";
 
 export {
     adlogin,
@@ -16,4 +17,5 @@ export {
     getUsersFn,
     getDoctorsFn,
     getTreatmentFn,
+    trtmntStsFn
 }

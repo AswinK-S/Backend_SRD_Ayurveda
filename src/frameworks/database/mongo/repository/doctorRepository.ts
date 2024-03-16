@@ -80,6 +80,7 @@ export class DoctorRepository implements IDoctorRepository{
         }
     }
 
+    //upload profile picture of doctor
     async updateImage(image:string,id:string):Promise<IDoctor|void>{
         try {
             console.log('img link in repo',image);

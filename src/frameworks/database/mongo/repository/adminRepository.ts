@@ -7,7 +7,10 @@ import {
     getUsersRepo,
     getDoctorsRepo,
     getTreatmentsRepo,
+    trtmntStatusChange
 } from './admin/index'
+
+
 import { Req } from "../../../types/serverPackageTypes";
 import { Iuser } from "../../../../@types/entity/userEntity";
 import userModel from "../models/userModel";
@@ -43,13 +46,23 @@ export class AdminRepository implements IadminRepository {
             throw (err)
         }
     }
-
+    //get treatments
     async getTretmentsAdmnRepo(req:Req):Promise<ITreatment[]|null>{
         try {
             const treatments = await getTreatmentsRepo(req,this.treatmentModels)
             return treatments
         } catch (error) {
            throw (error) 
+        }
+    }
+
+    //treatment status change
+    async getTrtmntStsAdmnRep(id:string):Promise<ITreatment|void>{
+        try {
+            const result = await trtmntStatusChange(id,this.treatmentModels)
+            return result
+        } catch (error) {
+            throw (error)
         }
     }
 

@@ -1,5 +1,5 @@
 interface ICloudinaryRepository{
-    saveToCloudinary(file:Object):Promise<any>
+    saveToCloudinary(file:Object,folder:string):Promise<any>
 }
 
 export default ICloudinaryRepository

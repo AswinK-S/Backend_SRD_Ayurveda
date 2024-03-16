@@ -18,7 +18,8 @@ import {
     listUnlist,
     getUsersFn,
     getDoctorsFn,
-    getTreatmentFn
+    getTreatmentFn,
+    trtmntStsFn
 } from './admin/index'
 
 import { ITreatmentRepository } from "../interface/repositoryIntrfce/treatmentRepository";
@@ -100,6 +101,15 @@ export class AdminUseCase implements IadminUseCase {
         } catch (error:any) {
             catchError(error,next)
         }
+    }
+
+    //treatment status change
+    async trtmntStsUseCase (id:string):Promise<ITreatment|void>{
+     try{
+        return await trtmntStsFn(this.adminRepository,id)
+     }catch(err:any){
+        throw (err)
+     }   
     }
 
 // --------------------------------------------------------------------------------------------------------doctor
