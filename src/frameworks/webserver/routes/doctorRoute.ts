@@ -15,5 +15,10 @@ export function doctorRoute(router:Route){
         doctorController.profileImg(req,res,next)
     }))
 
+    router.post('/details',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
+        console.log('req for details');
+        doctorController.doctorDetails(req,res,next)
+    }))
+
     return router
 }

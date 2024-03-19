@@ -10,9 +10,12 @@ import ICloudinaryRepository from "../interface/repositoryIntrfce/cloudinaryRepo
 
 import {
     doc_login,
-    updateProPic
+    updateProPic,
+    updateProfileFn
 } from './doctor/index'
 import { IHashPassword } from "../interface/services/hashPassword";
+import { response } from "express";
+import { Query } from "../../@types/entity/query";
 
 export class DoctorUseCase implements IDoctorUseCase{
 
@@ -36,18 +39,20 @@ export class DoctorUseCase implements IDoctorUseCase{
     async login({email,password,mob}:{email:string; password:string,mob:number},next:Next):Promise<{doctor:IDoctor;token:IToken}|void>{
         try{
             console.log('useCase--',email, password);
-            return await doc_login(
+            const result =await doc_login(
                 this.doctorRepository,
                 this.bcrypt,
                 this.jwtToken,
                 email,
                 password,
                 next)
+            return result    
         }catch(err:unknown){
             catchError(err,next)
         }
     }
 
+    //upload image
     async uploadProfileImage(image:any,id:string,next:Next):Promise<any|IDoctor >{
         try {
             console.log('---useCase image',image);
@@ -60,6 +65,17 @@ export class DoctorUseCase implements IDoctorUseCase{
             }
         } catch (error:any) {
             console.log('err frm useCase--',error.message);
+            catchError(error,next)
+        }
+    }
+
+
+    //update doctor profile info
+    async updateProfileUseCase (id:string,query:Query,next:Next):Promise<IDoctor|void>{
+        try {
+          const result =  updateProfileFn(id,query,this.doctorRepository)
+          return result
+        } catch (error:any) {
             catchError(error,next)
         }
     }

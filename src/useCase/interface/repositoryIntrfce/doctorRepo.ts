@@ -1,4 +1,5 @@
 import { IDoctor } from "../../../@types/entity/doctorEntity";
+import { Query } from "../../../@types/entity/query";
 import { ITreatment } from "../../../@types/entity/treatmentEntity";
 
 export interface    IDoctorRepository{
@@ -9,4 +10,5 @@ export interface    IDoctorRepository{
     list_UnlistDoc(id:string):Promise<string>
     findByEmail(email:string):Promise<{doctor:IDoctor}|{message?:string}>
     updateImage(image:string,id:string):Promise<IDoctor|void>
+    updateDetailsRepo(id:string,query:Query):Promise<IDoctor|void>
 }

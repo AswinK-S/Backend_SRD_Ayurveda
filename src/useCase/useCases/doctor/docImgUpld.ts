@@ -1,4 +1,3 @@
-import { DoctorRepository } from "../../../frameworks/database/mongo/repository/doctorRepository"
 import { IDoctor } from "../../../@types/entity/doctorEntity"
 import { Next } from "../../../frameworks/types/serverPackageTypes"
 import { IDoctorRepository } from "../../interface/repositoryIntrfce/doctorRepo";
@@ -7,7 +6,10 @@ export const updateProPic =async(doctorRepository:IDoctorRepository,img:string,i
     try {
         console.log('object-----');
         const result = await doctorRepository.updateImage(img,id)
-        if(result)return result
+        if(result){
+            result.password=''
+            return result
+        }
     } catch (error) {
         throw (error)
     }

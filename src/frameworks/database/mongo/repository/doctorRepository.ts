@@ -1,4 +1,5 @@
 import { IDoctor } from "../../../../@types/entity/doctorEntity";
+import { Query } from "../../../../@types/entity/query";
 import { IDoctorRepository } from "../../../../useCase/interface/repositoryIntrfce/doctorRepo";
 import doctorModel from "../models/doctorModel";
 
@@ -9,6 +10,7 @@ import {
     findDoctorByEmail,
     isDocExistInMob,
     uploadImgLink,
+    updateDoctorProfile
 } from './doctor/index'
 export class DoctorRepository implements IDoctorRepository{
 
@@ -89,6 +91,17 @@ export class DoctorRepository implements IDoctorRepository{
             return res
         } catch (err:any) {
             throw (err)
+        }
+    }
+
+    //update details
+    async updateDetailsRepo(id:string,query:Query):Promise<IDoctor|void>{
+        try {
+            const result = await updateDoctorProfile(query,id)
+            console.log('res in re---',result);
+            return result
+        } catch (error:any) {
+            throw (error)
         }
     }
 }
