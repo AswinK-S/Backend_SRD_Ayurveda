@@ -9,12 +9,14 @@ export function doctorRoute(router:Route){
     router.post('/login',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
         doctorController.doclogin(req,res,next)
     }))
-
+    
+    //image upload
     router.post('/image',multerMid.single('image'),catchAsyncErrors((req:Req,res:Res,next:Next)=>{
         console.log('img req reached');
         doctorController.profileImg(req,res,next)
     }))
 
+    //get doctor details
     router.post('/details',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
         console.log('req for details');
         doctorController.doctorDetails(req,res,next)

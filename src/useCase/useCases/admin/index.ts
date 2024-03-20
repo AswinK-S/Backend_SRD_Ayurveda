@@ -7,6 +7,7 @@ import { getUsersFn } from "./getUsers";
 import { getDoctorsFn } from "./getDoctors";
 import { getTreatmentFn } from "./getTreatment";
 import { trtmntStsFn } from "./trtmntStatus";
+import { findTreatmentFn } from "./findtTrtmntFn";
 
 export {
     adlogin,
@@ -17,5 +18,6 @@ export {
     getUsersFn,
     getDoctorsFn,
     getTreatmentFn,
-    trtmntStsFn
+    trtmntStsFn,
+    findTreatmentFn
 }

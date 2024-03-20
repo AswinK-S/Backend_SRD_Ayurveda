@@ -14,7 +14,7 @@ export function adminRoute(router:Route){
         adminController.add_treatment(req,res,next)
     }))
 
-    //getTreatment
+    //getTreatments
     router.get('/treatments',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
         adminController.treatments(req,res,next)
     }))
@@ -22,6 +22,12 @@ export function adminRoute(router:Route){
     //change treatment status
     router.patch('/trtMntStatus/:id',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
         adminController.treatmentStatus(req,res,next)
+    }))
+
+    // get single Treatment info 
+    router.get('/treatment/:id',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
+        console.log('req in router');
+        adminController.treatmentDetail(req,res,next)
     }))
 
 //------------------------------------------------------------------------------Doctors

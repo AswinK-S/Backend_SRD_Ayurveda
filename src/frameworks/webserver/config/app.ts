@@ -28,9 +28,6 @@ app.use(cors({
 }))
 
 
-
-
-
 app.use('/user',userRoute(express.Router()))
 app.use('/admin',adminRoute(express.Router()))
 app.use('/doctor',doctorRoute(express.Router()))

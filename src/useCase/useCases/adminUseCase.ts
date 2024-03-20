@@ -19,7 +19,8 @@ import {
     getUsersFn,
     getDoctorsFn,
     getTreatmentFn,
-    trtmntStsFn
+    trtmntStsFn,
+    findTreatmentFn
 } from './admin/index'
 
 import { ITreatmentRepository } from "../interface/repositoryIntrfce/treatmentRepository";
@@ -98,6 +99,15 @@ export class AdminUseCase implements IadminUseCase {
             console.log('req in useCse');
             const result = await getTreatmentFn(req,this.adminRepository,next)
             if(result)return result
+        } catch (error:any) {
+            catchError(error,next)
+        }
+    }
+
+    async findTreatmentUseCase(id:string,next:Next):Promise<ITreatment|void>{
+        try {
+            const result = await findTreatmentFn(id,this.adminRepository,next)
+            return result
         } catch (error:any) {
             catchError(error,next)
         }

@@ -60,6 +60,22 @@ export class AdminController {
             return next (new ErrorHandler(500,err.message))
         }
     }
+
+    // get single Treatment info 
+    async treatmentDetail(req:Req,res:Res,next:Next){
+        try {
+            console.log('req in cntrlr',req.body);
+            const id:string =req.params.id
+            console.log('------------',id);
+            const result = await this.adminUseCase.findTreatmentUseCase(id,next)
+            console.log('rslt in cntrlr',result);
+            res.status(200).json(result)
+        } catch (error:any) {
+            return next (new ErrorHandler(500,error.message))
+        }
+    }
+
+    
         
     // change Treatment status
     async treatmentStatus(req:Req,res:Res,next:Next){

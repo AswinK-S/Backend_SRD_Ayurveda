@@ -57,9 +57,7 @@ export class UserController {
       console.log('tkn while regtrng Usrcntrlr', token);
 
       res.cookie('verificationToken', token, {
-        // httpOnly:true,
-        // sameSite:'strict',
-        // expires: new Date(Date.now() + 10 * 60* 1000)
+        
         httpOnly: true,
         sameSite: 'none',
         secure: process.env.NODE_ENV !== 'development',

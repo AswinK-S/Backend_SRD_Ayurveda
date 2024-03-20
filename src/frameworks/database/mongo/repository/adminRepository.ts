@@ -7,7 +7,8 @@ import {
     getUsersRepo,
     getDoctorsRepo,
     getTreatmentsRepo,
-    trtmntStatusChange
+    trtmntStatusChange,
+    findTreatment
 } from './admin/index'
 
 
@@ -46,13 +47,25 @@ export class AdminRepository implements IadminRepository {
             throw (err)
         }
     }
+
     //get treatments
     async getTretmentsAdmnRepo(req:Req):Promise<ITreatment[]|null>{
         try {
             const treatments = await getTreatmentsRepo(req,this.treatmentModels)
             return treatments
-        } catch (error) {
+        } catch (error:any) {
            throw (error) 
+        }
+    }
+
+    //get single treatment info
+    async findTreatmentAdmnRepo(id:string):Promise<ITreatment|void>{
+        try {
+            const result = await findTreatment(id,this.treatmentModels)
+               if(result) return result
+
+        } catch (error:any) {
+            throw(error)
         }
     }
 
@@ -61,7 +74,7 @@ export class AdminRepository implements IadminRepository {
         try {
             const result = await trtmntStatusChange(id,this.treatmentModels)
             return result
-        } catch (error) {
+        } catch (error:any) {
             throw (error)
         }
     }
