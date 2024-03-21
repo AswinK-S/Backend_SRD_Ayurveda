@@ -19,6 +19,8 @@ export interface IadminUseCase {
     trtmntStsUseCase(id:string):Promise<ITreatment|void>
     //get single treatment info
     findTreatmentUseCase(id:string,next:Next):Promise<ITreatment|void>
+    //remove subTreatment
+    deleteSubTrtmntUseCase(id:string,subName:string):Promise<ITreatment|void>
 
 //-----------------------------------------------------------------------------------Doctors
 

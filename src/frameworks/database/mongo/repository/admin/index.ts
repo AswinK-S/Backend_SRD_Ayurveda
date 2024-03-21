@@ -4,6 +4,7 @@ import { getDoctorsRepo } from "./getDoctors";
 import { getTreatmentsRepo } from "./getTreatments";
 import { trtmntStatusChange } from "./lstUnlstTrtmnt";
 import { findTreatment } from "./getTreatment";
+import { rmvSubTrtmntRepo } from "./rmvSbTrtmnt";
 
 export {
     findAdminByEmail,
@@ -11,5 +12,6 @@ export {
     getDoctorsRepo,
     getTreatmentsRepo,
     trtmntStatusChange,
-    findTreatment
+    findTreatment,
+    rmvSubTrtmntRepo
 }

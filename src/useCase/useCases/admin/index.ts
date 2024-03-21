@@ -8,6 +8,7 @@ import { getDoctorsFn } from "./getDoctors";
 import { getTreatmentFn } from "./getTreatment";
 import { trtmntStsFn } from "./trtmntStatus";
 import { findTreatmentFn } from "./findtTrtmntFn";
+import { rmvSubTrtmntFn } from "./removeSbtrtmnt";
 
 export {
     adlogin,
@@ -19,5 +20,6 @@ export {
     getDoctorsFn,
     getTreatmentFn,
     trtmntStsFn,
-    findTreatmentFn
+    findTreatmentFn,
+    rmvSubTrtmntFn
 }

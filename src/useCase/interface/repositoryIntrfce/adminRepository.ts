@@ -11,4 +11,5 @@ export interface IadminRepository{
     getTretmentsAdmnRepo(req:Req):Promise<ITreatment[]|null>
     getTrtmntStsAdmnRep(id:string):Promise<ITreatment | void>
     findTreatmentAdmnRepo(id:string):Promise<ITreatment|void>
+    rmvSubTrtmntAdmnRepo(id:string,subName:string):Promise<ITreatment | void>
 }

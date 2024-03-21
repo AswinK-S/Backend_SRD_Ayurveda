@@ -20,7 +20,8 @@ import {
     getDoctorsFn,
     getTreatmentFn,
     trtmntStsFn,
-    findTreatmentFn
+    findTreatmentFn,
+    rmvSubTrtmntFn
 } from './admin/index'
 
 import { ITreatmentRepository } from "../interface/repositoryIntrfce/treatmentRepository";
@@ -120,6 +121,17 @@ export class AdminUseCase implements IadminUseCase {
      }catch(err:any){
         throw (err)
      }   
+    }
+
+    //delete subtreatment
+    async deleteSubTrtmntUseCase(id:string,subName:string):Promise<ITreatment|void>{
+        try {
+            console.log('id--',id,'sub---',subName);
+            const result =await  rmvSubTrtmntFn(id,subName,this.adminRepository)
+            return result
+        } catch (error:any) {
+            throw (error)
+        }
     }
 
 // --------------------------------------------------------------------------------------------------------doctor

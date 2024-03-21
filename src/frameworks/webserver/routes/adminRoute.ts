@@ -30,6 +30,10 @@ export function adminRoute(router:Route){
         adminController.treatmentDetail(req,res,next)
     }))
 
+    // remove subTreatment 
+    router.delete('/removeSubTrtmnt',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
+        adminController.rmvSubTrtmnt(req,res,next)
+    }))
 //------------------------------------------------------------------------------Doctors
     // add Doctor
     router.post('/add_Doc',catchAsyncErrors((req:Req,res:Res,next:Next)=>{

@@ -8,7 +8,8 @@ import {
     getDoctorsRepo,
     getTreatmentsRepo,
     trtmntStatusChange,
-    findTreatment
+    findTreatment,
+    rmvSubTrtmntRepo
 } from './admin/index'
 
 
@@ -28,7 +29,7 @@ export class AdminRepository implements IadminRepository {
         private userModels: typeof userModel,
         private doctorModels: typeof doctorModel,
         private treatmentModels: typeof treatmentModel
-    ) { }
+    ) {}
 
     async findAdminByEmail(email: string): Promise<Iadmin | null> {
         try {
@@ -39,6 +40,7 @@ export class AdminRepository implements IadminRepository {
         }
     }
 
+    //get all users
     async getUsersAdmnRepo(req: Req): Promise<Iuser[] | null> {
         try {
             const users = await getUsersRepo(req, this.userModels)
@@ -48,7 +50,7 @@ export class AdminRepository implements IadminRepository {
         }
     }
 
-    //get treatments
+    //get all treatments
     async getTretmentsAdmnRepo(req:Req):Promise<ITreatment[]|null>{
         try {
             const treatments = await getTreatmentsRepo(req,this.treatmentModels)
@@ -79,7 +81,18 @@ export class AdminRepository implements IadminRepository {
         }
     }
 
+    //remove subTreatment
+    async rmvSubTrtmntAdmnRepo(id:string,subName:string):Promise<ITreatment | void>{
+        try {
+            console.log('id---in admn rep',id,'  sub--',subName);
+            const result = await rmvSubTrtmntRepo(id,subName,this.treatmentModels)
+            if(result)return result
+        } catch (error:any) {
+            throw (error)
+        }
+    }
 
+    //get all doctors 
     async getDoctorsAdmnRepo(req: Req): Promise < IDoctor[] |null > {
         try{
             console.log('req in repooo');
