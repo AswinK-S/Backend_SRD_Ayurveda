@@ -1,9 +1,10 @@
-import { Iadmin } from "../../../@types/entity/adminEntity";
-import { Iuser } from "../../../@types/entity/userEntity";
+import { Iadmin } from "../../../entity/adminEntity";
+import { Iuser } from "../../../entity/userEntity";
 import { Next ,Req} from "../../../frameworks/types/serverPackageTypes";
 import { IToken } from "../services/jwt.types";
-import { ITreatment } from "../../../@types/entity/treatmentEntity";
-import { IDoctor } from "../../../@types/entity/doctorEntity";
+import { ITreatment } from "../../../entity/treatmentEntity";
+import { IDoctor } from "../../../entity/doctorEntity";
+import { ISubTreatment } from "../../../entity/subTrtmnt";
 export interface IadminUseCase {
 
     // adminLogin
@@ -21,6 +22,8 @@ export interface IadminUseCase {
     findTreatmentUseCase(id:string,next:Next):Promise<ITreatment|void>
     //remove subTreatment
     deleteSubTrtmntUseCase(id:string,subName:string):Promise<ITreatment|void>
+    //update Treatment
+    updateTreatmentUseCase(id:string,subTreatments:ISubTreatment[]):Promise<ITreatment|void>
 
 //-----------------------------------------------------------------------------------Doctors
 

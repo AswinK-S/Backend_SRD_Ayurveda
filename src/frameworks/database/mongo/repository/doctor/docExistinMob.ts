@@ -1,5 +1,5 @@
 import doctorModel from "../../models/doctorModel";
-import { IDoctor } from "../../../../../@types/entity/doctorEntity";
+import { IDoctor } from "../../../../../entity/doctorEntity";
 
 export const isDocExistInMob = async (mob:number):Promise<IDoctor|string> =>{
     try{

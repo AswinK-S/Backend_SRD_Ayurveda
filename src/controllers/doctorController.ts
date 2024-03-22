@@ -3,7 +3,7 @@ import ErrorHandler from "../useCase/middleware/errorHandler";
 
 import { accessTokenOptions, refreshTokenOptions } from "../frameworks/middlewares/tokenOptions";
 import { IDoctorUseCase } from "../useCase/interface/IntrfcUseCase/doctorUseCase";
-import { Query } from "../@types/entity/query";
+import { Query } from "../entity/query";
 export class DoctorController {
     private doctorUseCase: IDoctorUseCase
 

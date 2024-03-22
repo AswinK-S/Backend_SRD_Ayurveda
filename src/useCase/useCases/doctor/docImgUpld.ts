@@ -1,4 +1,4 @@
-import { IDoctor } from "../../../@types/entity/doctorEntity"
+import { IDoctor } from "../../../entity/doctorEntity"
 import { Next } from "../../../frameworks/types/serverPackageTypes"
 import { IDoctorRepository } from "../../interface/repositoryIntrfce/doctorRepo";
 

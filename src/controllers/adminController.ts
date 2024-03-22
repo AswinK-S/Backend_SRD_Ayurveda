@@ -3,7 +3,7 @@ import { Req, Res, Next } from "../frameworks/types/serverPackageTypes";
 
 import { accessTokenOptions, refreshTokenOptions } from "../frameworks/middlewares/tokenOptions";
 import ErrorHandler from "../useCase/middleware/errorHandler";
-import { IDoctor } from "../@types/entity/doctorEntity";
+import { IDoctor } from "../entity/doctorEntity";
 
 
 export class AdminController {
@@ -90,6 +90,21 @@ export class AdminController {
             return next(new ErrorHandler(500, err.message))
         }
 
+    }
+
+    //update treatment
+    async updateTreatment(req:Req,res:Res,next:Next){
+        try {
+            console.log('req in cntrlr',req.body);
+            const id:string =req.body.id
+            const subTreatments:[] =req.body.subTreatments
+            console.log('id -->',id,'  subtrt--->',subTreatments);
+
+            const result = await this.adminUseCase.updateTreatmentUseCase(id,subTreatments)
+            console.log('rslt in cntrlr',result);
+        } catch (error:any) {
+            return next(new ErrorHandler(500,error.message))
+        }
     }
 
     // change Treatment status

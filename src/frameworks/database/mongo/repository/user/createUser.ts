@@ -1,4 +1,4 @@
-import { Iuser } from "../../../../../@types/entity/userEntity";
+import { Iuser } from "../../../../../entity/userEntity";
 import userModel from "../../models/userModel";
 
 export const createUser = async (newUser:Iuser,userModels:typeof userModel): Promise <Iuser> =>{

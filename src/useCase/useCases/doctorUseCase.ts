@@ -1,4 +1,4 @@
-import { IDoctor } from "../../@types/entity/doctorEntity";
+import { IDoctor } from "../../entity/doctorEntity";
 import { Next } from "../../frameworks/types/serverPackageTypes";
 import { IDoctorUseCase } from "../interface/IntrfcUseCase/doctorUseCase";
 import { IDoctorJwt, IToken } from "../interface/services/jwt.types";
@@ -15,7 +15,7 @@ import {
 } from './doctor/index'
 import { IHashPassword } from "../interface/services/hashPassword";
 import { response } from "express";
-import { Query } from "../../@types/entity/query";
+import { Query } from "../../entity/query";
 
 export class DoctorUseCase implements IDoctorUseCase{
 

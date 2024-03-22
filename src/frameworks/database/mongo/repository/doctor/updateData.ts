@@ -1,5 +1,5 @@
-import { Query } from "../../../../../@types/entity/query";
-import { IDoctor } from "../../../../../@types/entity/doctorEntity";
+import { Query } from "../../../../../entity/query";
+import { IDoctor } from "../../../../../entity/doctorEntity";
 import doctorModel from "../../models/doctorModel";
 
 export const updateDoctorProfile = async (query:Query,id:string):Promise<IDoctor| void> =>{

@@ -1,4 +1,4 @@
-import { Iadmin } from "../../../../@types/entity/adminEntity";
+import { Iadmin } from "../../../../entity/adminEntity";
 import mongoose,{ Schema,Model } from "mongoose";
 
 const adminSchema:Schema<Iadmin> = new Schema({

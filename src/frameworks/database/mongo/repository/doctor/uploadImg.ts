@@ -1,4 +1,4 @@
-import { IDoctor } from "../../../../../@types/entity/doctorEntity";
+import { IDoctor } from "../../../../../entity/doctorEntity";
 import doctorModel from "../../models/doctorModel";
 
 export const  uploadImgLink = async (image:string,id:string):Promise<IDoctor|void>=>{

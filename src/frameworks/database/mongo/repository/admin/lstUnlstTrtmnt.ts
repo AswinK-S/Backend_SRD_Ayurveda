@@ -1,4 +1,4 @@
-import { ITreatment } from "../../../../../@types/entity/treatmentEntity";
+import { ITreatment } from "../../../../../entity/treatmentEntity";
 import treatmentModel from "../../models/treatmentModel";
 
 export const trtmntStatusChange =async(id:string,treatmentModels:typeof treatmentModel):Promise<ITreatment |void>=>{

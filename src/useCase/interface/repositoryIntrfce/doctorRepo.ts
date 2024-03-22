@@ -1,6 +1,6 @@
-import { IDoctor } from "../../../@types/entity/doctorEntity";
-import { Query } from "../../../@types/entity/query";
-import { ITreatment } from "../../../@types/entity/treatmentEntity";
+import { IDoctor } from "../../../entity/doctorEntity";
+import { Query } from "../../../entity/query";
+import { ITreatment } from "../../../entity/treatmentEntity";
 
 export interface    IDoctorRepository{
     addDoctor({ name, email, mob, password, address, experience, doctor_id, treatment,subTreatment }:

@@ -9,6 +9,8 @@ import { getTreatmentFn } from "./getTreatment";
 import { trtmntStsFn } from "./trtmntStatus";
 import { findTreatmentFn } from "./findtTrtmntFn";
 import { rmvSubTrtmntFn } from "./removeSbtrtmnt";
+import { updateTreatmentFn } from "./updateTrtmnt";
+
 
 export {
     adlogin,
@@ -21,5 +23,6 @@ export {
     getTreatmentFn,
     trtmntStsFn,
     findTreatmentFn,
-    rmvSubTrtmntFn
+    rmvSubTrtmntFn,
+    updateTreatmentFn
 }

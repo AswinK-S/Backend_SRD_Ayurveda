@@ -1,9 +1,9 @@
-import { IDoctor } from "../../../@types/entity/doctorEntity";
+import { IDoctor } from "../../../entity/doctorEntity";
 import { IDoctorRepository } from "../../interface/repositoryIntrfce/doctorRepo";
 import ErrorHandler from "../../middleware/errorHandler";
 import { Next } from "../../../frameworks/types/serverPackageTypes";
 import { IHashPassword } from "../../interface/services/hashPassword";
-import { ITreatment } from "../../../@types/entity/treatmentEntity";
+import { ITreatment } from "../../../entity/treatmentEntity";
 import { ISendMail } from "../../interface/services/sendMail";
 
 

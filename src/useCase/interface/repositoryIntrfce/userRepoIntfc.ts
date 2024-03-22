@@ -1,4 +1,4 @@
-import { Iuser } from "../../../@types/entity/userEntity";
+import { Iuser } from "../../../entity/userEntity";
 
 export interface IUserRepository {
     

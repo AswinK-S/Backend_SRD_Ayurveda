@@ -2,11 +2,10 @@ import { IadminUseCase } from "../interface/IntrfcUseCase/adminUseCase";
 import { IadminRepository } from "../interface/repositoryIntrfce/adminRepository";
 import { IHashPassword } from "../interface/services/hashPassword";
 import { IadminJwt, IToken } from "../interface/services/jwt.types";
-import { Iadmin } from "../../@types/entity/adminEntity";
+import { Iadmin } from "../../entity/adminEntity";
 import { Next, Req, Res } from "../../frameworks/types/serverPackageTypes";
 import { catchError } from "../middleware/catchError";
-
-
+import { ISubTreatment } from "../../entity/subTrtmnt";
 // import { adlogin } from "./admin/login";
 // import { addTreatment } from "./admin/addTreatment";
 
@@ -21,17 +20,18 @@ import {
     getTreatmentFn,
     trtmntStsFn,
     findTreatmentFn,
-    rmvSubTrtmntFn
+    rmvSubTrtmntFn,
+    updateTreatmentFn
 } from './admin/index'
 
 import { ITreatmentRepository } from "../interface/repositoryIntrfce/treatmentRepository";
-import { ITreatment } from "../../@types/entity/treatmentEntity";
+import { ITreatment } from "../../entity/treatmentEntity";
 import { NextFunction } from "express";
-import { IDoctor } from "../../@types/entity/doctorEntity";
+import { IDoctor } from "../../entity/doctorEntity";
 import { IDoctorRepository } from "../interface/repositoryIntrfce/doctorRepo";
 
 import { IUserRepository } from "../interface/repositoryIntrfce/userRepoIntfc";
-import { Iuser } from "../../@types/entity/userEntity";
+import { Iuser } from "../../entity/userEntity";
 import { ISendMail } from "../interface/services/sendMail";
 
 export class AdminUseCase implements IadminUseCase {
@@ -91,6 +91,15 @@ export class AdminUseCase implements IadminUseCase {
           
         } catch (err: any) {
             catchError(err, next);
+        }
+    }
+
+    // update Treatment
+    async updateTreatmentUseCase(id:string,subTreatments:ISubTreatment[]):Promise<ITreatment|void>{
+        try {
+            const result = await updateTreatmentFn (id,subTreatments,this.adminRepository)
+        } catch (error:any) {
+            throw (error)
         }
     }
 

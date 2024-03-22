@@ -1,4 +1,4 @@
-import { IDoctor } from "../../../../@types/entity/doctorEntity";
+import { IDoctor } from "../../../../entity/doctorEntity";
 import mongoose, { Model, Schema } from "mongoose";
 
 const doctorSchema: Schema<IDoctor> = new mongoose.Schema({

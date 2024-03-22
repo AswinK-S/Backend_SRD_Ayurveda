@@ -1,9 +1,9 @@
-import { Iuser } from "../../@types/entity/userEntity";
+import { Iuser } from "../../entity/userEntity";
 import { IToken,IJwt, IadminJwt, IDoctorJwt } from "../../useCase/interface/services/jwt.types";
-import { Iadmin } from "../../@types/entity/adminEntity";
+import { Iadmin } from "../../entity/adminEntity";
 
 import jwt from 'jsonwebtoken'
-import { IDoctor } from "../../@types/entity/doctorEntity";
+import { IDoctor } from "../../entity/doctorEntity";
 require('dotenv').config()
 
 export class    JWTtoken implements IJwt,IadminJwt,IDoctorJwt {

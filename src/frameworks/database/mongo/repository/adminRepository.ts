@@ -1,6 +1,7 @@
 import { IadminRepository } from "../../../../useCase/interface/repositoryIntrfce/adminRepository";
-import { Iadmin } from "../../../../@types/entity/adminEntity";
+import { Iadmin } from "../../../../entity/adminEntity";
 import adminModel from "../models/adminModel";
+import { ISubTreatment } from "../../../../entity/subTrtmnt";
 
 import {
     findAdminByEmail,
@@ -9,16 +10,17 @@ import {
     getTreatmentsRepo,
     trtmntStatusChange,
     findTreatment,
-    rmvSubTrtmntRepo
+    rmvSubTrtmntRepo,
+    updateTreatmentRepo
 } from './admin/index'
 
 
 import { Req } from "../../../types/serverPackageTypes";
-import { Iuser } from "../../../../@types/entity/userEntity";
+import { Iuser } from "../../../../entity/userEntity";
 import userModel from "../models/userModel";
 import doctorModel from "../models/doctorModel";
-import { IDoctor } from "../../../../@types/entity/doctorEntity";
-import { ITreatment } from "../../../../@types/entity/treatmentEntity";
+import { IDoctor } from "../../../../entity/doctorEntity";
+import { ITreatment } from "../../../../entity/treatmentEntity";
 import treatmentModel from "../models/treatmentModel";
 
 
@@ -57,6 +59,16 @@ export class AdminRepository implements IadminRepository {
             return treatments
         } catch (error:any) {
            throw (error) 
+        }
+    }
+
+    // update tretments 
+    async updateTrtmntAdmnRepo(id:string,subTreatments:ISubTreatment[]):Promise<ITreatment|void>{
+        try {
+            console.log('admn trt repo id-->',id,'s->',subTreatments);
+            const result = await updateTreatmentRepo(id,subTreatments,this.treatmentModels)
+        } catch (error:any) {
+            throw (error)
         }
     }
 

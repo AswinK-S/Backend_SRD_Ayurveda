@@ -8,7 +8,7 @@ export function adminRoute(router:Route){
     router.post('/adlogin',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
         adminController.adlogin(req,res,next)
     }) )
-
+    //---------------------------------------------------------------------------- treatments
     //addTreatment
     router.post('/addTreatment',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
         adminController.add_treatment(req,res,next)
@@ -33,6 +33,11 @@ export function adminRoute(router:Route){
     // remove subTreatment 
     router.delete('/removeSubTrtmnt',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
         adminController.rmvSubTrtmnt(req,res,next)
+    }))
+
+    //update treatment
+    router.patch('/edit_trtmnt',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
+        adminController.updateTreatment(req,res,next)
     }))
 //------------------------------------------------------------------------------Doctors
     // add Doctor

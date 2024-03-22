@@ -1,4 +1,4 @@
-import { ITreatment } from "../../../../@types/entity/treatmentEntity";
+import { ITreatment } from "../../../../entity/treatmentEntity";
 
 import mongoose, { Schema, Model } from "mongoose";
 

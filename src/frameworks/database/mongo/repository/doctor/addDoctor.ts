@@ -1,4 +1,4 @@
-import { IDoctor } from "../../../../../@types/entity/doctorEntity";
+import { IDoctor } from "../../../../../entity/doctorEntity";
 import doctorModel from "../../models/doctorModel";
 
 export const addDoctorRepo  = async({name, email, mob, password, address, experience, doctor_id, treatment,subTreatment }: IDoctor):Promise <IDoctor>=>{

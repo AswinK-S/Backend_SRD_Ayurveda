@@ -1,4 +1,4 @@
-import { IOtp } from "../../../../@types/entity/otp";
+import { IOtp } from "../../../../entity/otp";
 import { IOtpRepository } from "../../../interface/repositoryIntrfce/otpRepository";
 
 

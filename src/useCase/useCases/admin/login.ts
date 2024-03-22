@@ -1,4 +1,4 @@
-import { Iadmin } from "../../../@types/entity/adminEntity"
+import { Iadmin } from "../../../entity/adminEntity"
 import { IadminJwt } from "../../interface/services/jwt.types"
 import { IToken } from "../../interface/services/jwt.types"
 import { IadminRepository } from "../../interface/repositoryIntrfce/adminRepository"

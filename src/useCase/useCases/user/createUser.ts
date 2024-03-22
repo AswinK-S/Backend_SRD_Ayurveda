@@ -1,6 +1,6 @@
 import { IOtpRepository } from "../../interface/repositoryIntrfce/otpRepository";
 import { IUserRepository } from "../../interface/repositoryIntrfce/userRepoIntfc";
-import { Iuser } from "../../../@types/entity/userEntity";
+import { Iuser } from "../../../entity/userEntity";
 import { IJwt } from "../../interface/services/jwt.types";
 import { Next } from "../../../frameworks/types/serverPackageTypes";
 import ErrorHandler from "../../middleware/errorHandler";

@@ -1,4 +1,4 @@
-import { ITreatment } from "../../../@types/entity/treatmentEntity";
+import { ITreatment } from "../../../entity/treatmentEntity";
 
 export interface ITreatmentRepository {
     addTreatment(name: string, subTreatments: string[]): Promise<ITreatment>;

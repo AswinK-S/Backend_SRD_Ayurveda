@@ -1,6 +1,6 @@
-import { Iuser } from "../../../@types/entity/userEntity";
-import { Iadmin } from "../../../@types/entity/adminEntity";
-import { IDoctor } from "../../../@types/entity/doctorEntity";
+import { Iuser } from "../../../entity/userEntity";
+import { Iadmin } from "../../../entity/adminEntity";
+import { IDoctor } from "../../../entity/doctorEntity";
 
 export interface IToken{
     accessToken:string;

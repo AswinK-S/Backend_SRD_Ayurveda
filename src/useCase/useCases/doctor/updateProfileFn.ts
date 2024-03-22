@@ -1,5 +1,5 @@
-import { IDoctor } from "../../../@types/entity/doctorEntity";
-import { Query } from "../../../@types/entity/query";
+import { IDoctor } from "../../../entity/doctorEntity";
+import { Query } from "../../../entity/query";
 import { IDoctorRepository } from "../../interface/repositoryIntrfce/doctorRepo";
 
 

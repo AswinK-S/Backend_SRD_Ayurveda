@@ -3,7 +3,7 @@ import cookieParser from "cookie-parser";
 import cors from 'cors'
 import { errorMiddleware } from "../../../useCase/middleware/errorMiddleWare";
 
-import morgan from 'morgan'
+// import morgan from 'morgan'
 
 // Routes
 import { userRoute } from "../routes/userRoute";
