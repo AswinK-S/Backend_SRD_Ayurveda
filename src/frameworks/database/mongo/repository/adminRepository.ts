@@ -62,11 +62,12 @@ export class AdminRepository implements IadminRepository {
         }
     }
 
-    // update tretments 
-    async updateTrtmntAdmnRepo(id:string,subTreatments:ISubTreatment[]):Promise<ITreatment|void>{
+    // update treatments 
+    async updateTrtmntAdmnRepo(id:string,subTreatments:ISubTreatment[]):Promise<{treatment:ITreatment|null,message:string}>{
         try {
             console.log('admn trt repo id-->',id,'s->',subTreatments);
             const result = await updateTreatmentRepo(id,subTreatments,this.treatmentModels)
+             return result
         } catch (error:any) {
             throw (error)
         }

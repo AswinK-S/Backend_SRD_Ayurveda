@@ -1,5 +1,6 @@
 import { Route,Req,Res,Next } from "../../types/serverPackageTypes";
 import { catchAsyncErrors } from "../middleware/catchAsyncErrors";
+import { subTrtmdlware } from "../middleware/subTrtmntVldtn";
 import { adminController } from "./injections/injuction";
 
 export function adminRoute(router:Route){
@@ -36,7 +37,7 @@ export function adminRoute(router:Route){
     }))
 
     //update treatment
-    router.patch('/edit_trtmnt',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
+    router.patch('/edit_trtmnt',subTrtmdlware,catchAsyncErrors((req:Req,res:Res,next:Next)=>{
         adminController.updateTreatment(req,res,next)
     }))
 //------------------------------------------------------------------------------Doctors

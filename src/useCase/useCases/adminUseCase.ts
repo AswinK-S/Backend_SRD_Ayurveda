@@ -95,9 +95,10 @@ export class AdminUseCase implements IadminUseCase {
     }
 
     // update Treatment
-    async updateTreatmentUseCase(id:string,subTreatments:ISubTreatment[]):Promise<ITreatment|void>{
+    async updateTreatmentUseCase(id:string,subTreatments:ISubTreatment[]):Promise<{treatment:ITreatment |null,message:string}>{
         try {
             const result = await updateTreatmentFn (id,subTreatments,this.adminRepository)
+            return result
         } catch (error:any) {
             throw (error)
         }

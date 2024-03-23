@@ -36,7 +36,7 @@ export const    addTreatment = async (
             } else {
                 // Handle the case where updatedTreatment is void
                 console.error('Failed to add sub-treatment');
-                return; // Return void
+                return; 
             }
         }
         else if(typeof treatmentExist !== 'string'){

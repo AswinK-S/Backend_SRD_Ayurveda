@@ -23,7 +23,7 @@ export interface IadminUseCase {
     //remove subTreatment
     deleteSubTrtmntUseCase(id:string,subName:string):Promise<ITreatment|void>
     //update Treatment
-    updateTreatmentUseCase(id:string,subTreatments:ISubTreatment[]):Promise<ITreatment|void>
+    updateTreatmentUseCase(id:string,subTreatments:ISubTreatment[]):Promise<{treatment:ITreatment|null,message:string}>
 
 //-----------------------------------------------------------------------------------Doctors
 

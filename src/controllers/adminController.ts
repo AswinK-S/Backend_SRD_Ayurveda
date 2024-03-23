@@ -102,6 +102,7 @@ export class AdminController {
 
             const result = await this.adminUseCase.updateTreatmentUseCase(id,subTreatments)
             console.log('rslt in cntrlr',result);
+            res.json(result)
         } catch (error:any) {
             return next(new ErrorHandler(500,error.message))
         }
