@@ -27,23 +27,20 @@ export class DoctorController {
         }
     }
 
-    //update profile image
-    async profileImg(req: Req, res: Res, next: Next) {
+    //get doctor details
+    async getDoctor(req:Req,res:Res,next:Next){
         try {
-            console.log('req--', req.file);
-            const image: any = req.file
-            const id: string = req.body.id
-            console.log('req body', req.body, " id >", id);
-            const result = await this.doctorUseCase.uploadProfileImage(image, id, next)
-            console.log('reslt in cntrlr', result);
+            const id:string= req.params.id
+            const result = await this.doctorUseCase.getDocDetailUseCase(id,next)
+            console.log('rslt in cntrlr--------->',result);
             res.status(200).json(result)
-        } catch (error: any) {
-            return next(new ErrorHandler(500, error.message))
+        } catch (error:any) {
+            return new ErrorHandler(500,error.message)
         }
     }
+ 
 
-
-    // get doctor details 
+    // post doctor details 
     async doctorDetails(req: Req, res: Res, next: Next) {
         try {
             console.log('req in cntrlr', req.body);
@@ -69,6 +66,38 @@ export class DoctorController {
             return next(new ErrorHandler(500, error.message))
         }
     }
+
+
+       //update profile image
+       async profileImg(req: Req, res: Res, next: Next) {
+        try {
+            console.log('req--', req.file);
+            const image: any = req.file
+            const id: string = req.body.id
+            console.log('req body', req.body, " id >", id);
+            const result = await this.doctorUseCase.uploadProfileImage(image, id, next)
+            console.log('reslt in cntrlr', result);
+            res.status(200).json(result)
+        } catch (error: any) {
+            return next(new ErrorHandler(500, error.message))
+        }
+    }
+
+    // upload document 
+    async uploadDoc(req:Req,res:Res,next:Next){
+        try{
+            console.log('re in cntrlr',req.file);
+            const image:any = req.file
+            const id: string = req.body.id
+            console.log('id-->',id,'image--->',image);
+            const result = await this.doctorUseCase.uploadDoc(image,id,next)
+            console.log('rslt in cntrlr',result);
+
+        }catch(error:any){
+            return next( new ErrorHandler(500,error.message))
+        }
+    }
+
 
     
 

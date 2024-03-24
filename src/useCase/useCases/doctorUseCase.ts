@@ -11,8 +11,12 @@ import ICloudinaryRepository from "../interface/repositoryIntrfce/cloudinaryRepo
 import {
     doc_login,
     updateProPic,
-    updateProfileFn
+    updateProfileFn,
+    updateDocFn,
+    getDoctorFn
 } from './doctor/index'
+
+
 import { IHashPassword } from "../interface/services/hashPassword";
 import { response } from "express";
 import { Query } from "../../entity/query";
@@ -52,6 +56,16 @@ export class DoctorUseCase implements IDoctorUseCase{
         }
     }
 
+    //get doctor details
+    async getDocDetailUseCase (id:string,next:Next):Promise<IDoctor|void>{
+        try {
+            const result = await getDoctorFn (id,this.doctorRepository)
+            return result
+        } catch (error:any) {
+            catchError(error,next)
+        }
+    }
+
     //upload image
     async uploadProfileImage(image:any,id:string,next:Next):Promise<any|IDoctor >{
         try {
@@ -68,6 +82,20 @@ export class DoctorUseCase implements IDoctorUseCase{
             catchError(error,next)
         }
     }
+
+    //upload document
+    async uploadDoc(image:any,id:string,next:Next):Promise<any|IDoctor>{
+        try {
+            const result = await this.cloudinary.saveToCloudinary(image,'projectSRd')
+            if(result){
+                const res =await updateDocFn(this.doctorRepository,result,id,next)
+                return res;
+            }
+        } catch (error:any) {
+            catchError(error,next)
+        }
+    }
+
 
 
     //update doctor profile info

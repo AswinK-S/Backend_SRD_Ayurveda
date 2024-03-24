@@ -10,7 +10,7 @@ export const updateProPic =async(doctorRepository:IDoctorRepository,img:string,i
             result.password=''
             return result
         }
-    } catch (error) {
+    } catch (error:any) {
         throw (error)
     }
 }

@@ -5,6 +5,8 @@ import { findDoctorByEmail } from "./findDoctorByEmail";
 import { isDocExistInMob } from "./docExistinMob";
 import { uploadImgLink } from "./uploadImg";
 import { updateDoctorProfile } from "./updateData";
+import { uploadDocument } from "./updtDcmnt";
+import { findById } from "./findById";
 
 export {
     addDoctorRepo,
@@ -13,5 +15,7 @@ export {
     findDoctorByEmail,
     isDocExistInMob,
     uploadImgLink,
-    updateDoctorProfile
+    updateDoctorProfile,
+    uploadDocument,
+    findById
 }

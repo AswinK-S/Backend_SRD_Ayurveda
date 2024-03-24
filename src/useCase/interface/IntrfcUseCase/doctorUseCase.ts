@@ -9,6 +9,7 @@ export interface IDoctorUseCase {
     login({email,password}:{email:string;password:string},next:Next):Promise<{doctor:IDoctor;token:IToken} | void >
     uploadProfileImage(image:any,id:string,next:Next):Promise<any >
     updateProfileUseCase (id:string,query:Query,next:Next):Promise<IDoctor|void>
-    
+    uploadDoc(image:any,id:string,next:Next):Promise<any|IDoctor>
+    getDocDetailUseCase (id:string,next:Next):Promise<IDoctor|void>
 }
 

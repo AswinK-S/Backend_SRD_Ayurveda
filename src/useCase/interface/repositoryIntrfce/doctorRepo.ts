@@ -10,5 +10,7 @@ export interface    IDoctorRepository{
     list_UnlistDoc(id:string):Promise<string>
     findByEmail(email:string):Promise<{doctor:IDoctor}|{message?:string}>
     updateImage(image:string,id:string):Promise<IDoctor|void>
+    updateDoc(image:string,id:string):Promise<IDoctor|void>
     updateDetailsRepo(id:string,query:Query):Promise<IDoctor|void>
+    findDoctor(id:string):Promise<IDoctor|void>
 }

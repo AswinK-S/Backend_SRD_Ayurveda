@@ -14,6 +14,7 @@ const doctorSchema: Schema<IDoctor> = new mongoose.Schema({
     status: { type: Boolean ,default:true},
     isVerified: { type: Boolean,default:false },
     image:{type:String},
+    document:{type:String}
 })
 
 const doctorModel:Model<IDoctor> = mongoose.model('Doctor',doctorSchema)

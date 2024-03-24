@@ -10,7 +10,9 @@ import {
     findDoctorByEmail,
     isDocExistInMob,
     uploadImgLink,
-    updateDoctorProfile
+    updateDoctorProfile,
+    uploadDocument,
+    findById
 } from './doctor/index'
 export class DoctorRepository implements IDoctorRepository{
 
@@ -44,6 +46,17 @@ export class DoctorRepository implements IDoctorRepository{
        }catch(err){
         throw (err)
        }
+    }
+
+    //get doctor details
+    async findDoctor(id: string): Promise<void | IDoctor> {
+        try {
+            const result = await findById(id,this.doctorModels)
+            if(result)return result
+            
+        } catch (error:any) {
+            throw (error)
+        }
     }
 
 
@@ -91,6 +104,17 @@ export class DoctorRepository implements IDoctorRepository{
             return res
         } catch (err:any) {
             throw (err)
+        }
+    }
+
+    // update document 
+    async updateDoc(image:string,id:string):Promise<IDoctor|void>{
+        try{
+
+            const result = await uploadDocument(image,id,this.doctorModels)
+            return result
+        }catch(error:any){
+            throw(error)
         }
     }
 
