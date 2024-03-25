@@ -51,6 +51,11 @@ export function adminRoute(router:Route){
         adminController.docStatus(req,res,next)
     }))
 
+    //verify doctor
+    router.post('/verifyDoctor/:id',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
+        adminController.verifyDoc(req,res,next)
+    }))
+
     // get Doctors
     router.get('/getDoctors',catchAsyncErrors((req:Req,res:Res,next:Next)=>{
         adminController.getDoctors(req,res,next)

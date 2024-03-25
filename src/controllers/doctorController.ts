@@ -92,9 +92,11 @@ export class DoctorController {
             console.log('id-->',id,'image--->',image);
             const result = await this.doctorUseCase.uploadDoc(image,id,next)
             console.log('rslt in cntrlr',result);
+            res.status(200).json(result)
+            
 
-        }catch(error:any){
-            return next( new ErrorHandler(500,error.message))
+        }catch(error){
+            return next( new ErrorHandler(500,(error as Error).message))
         }
     }
 

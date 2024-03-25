@@ -170,6 +170,19 @@ export class AdminController {
         }
     }
 
+    //verify docotor
+    async verifyDoc (req:Req,res:Res,next:Next){
+        try {
+            const id:string=req.params.id
+            console.log('id-->',id);
+            const result = await this.adminUseCase.verifyDoctor(id,next)
+            console.log('rslt in cntrlr-->',result);
+            res.status(200).json(result)
+        } catch (error:any) {
+            return next (new ErrorHandler(500,error.message))
+        }
+    }
+
     //get doctors
     async getDoctors(req: Req, res: Res, next: Next) {
         try {

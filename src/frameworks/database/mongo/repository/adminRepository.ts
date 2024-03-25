@@ -11,7 +11,8 @@ import {
     trtmntStatusChange,
     findTreatment,
     rmvSubTrtmntRepo,
-    updateTreatmentRepo
+    updateTreatmentRepo,
+    verifydoctor
 } from './admin/index'
 
 
@@ -114,6 +115,16 @@ export class AdminRepository implements IadminRepository {
 
         }catch(err:any) {
             throw (err)
+        }
+    }
+
+    //verify doctor
+     async verifyDoctorRepo(id: string): Promise<void | IDoctor> {
+        try {
+            const result = await verifydoctor(id,this.doctorModels)
+            if(result) return result
+        } catch (error:any) {
+            throw (error)
         }
     }
 }

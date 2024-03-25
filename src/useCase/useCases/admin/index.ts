@@ -10,6 +10,7 @@ import { trtmntStsFn } from "./trtmntStatus";
 import { findTreatmentFn } from "./findtTrtmntFn";
 import { rmvSubTrtmntFn } from "./removeSbtrtmnt";
 import { updateTreatmentFn } from "./updateTrtmnt";
+import { verifDoctorFn } from "./verifyDoc";
 
 
 export {
@@ -24,5 +25,6 @@ export {
     trtmntStsFn,
     findTreatmentFn,
     rmvSubTrtmntFn,
-    updateTreatmentFn
+    updateTreatmentFn,
+    verifDoctorFn
 }

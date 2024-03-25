@@ -6,6 +6,7 @@ import { trtmntStatusChange } from "./lstUnlstTrtmnt";
 import { findTreatment } from "./getTreatment";
 import { rmvSubTrtmntRepo } from "./rmvSbTrtmnt";
 import { updateTreatmentRepo } from "./updateTrtmnt";
+import { verifydoctor } from "./verifyDoctor";
 
 
 export {
@@ -16,5 +17,6 @@ export {
     trtmntStatusChange,
     findTreatment,
     rmvSubTrtmntRepo,
-    updateTreatmentRepo
+    updateTreatmentRepo,
+    verifydoctor
 }

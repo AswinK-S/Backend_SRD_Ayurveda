@@ -21,7 +21,8 @@ import {
     trtmntStsFn,
     findTreatmentFn,
     rmvSubTrtmntFn,
-    updateTreatmentFn
+    updateTreatmentFn,
+    verifDoctorFn
 } from './admin/index'
 
 import { ITreatmentRepository } from "../interface/repositoryIntrfce/treatmentRepository";
@@ -167,6 +168,16 @@ export class AdminUseCase implements IadminUseCase {
             return result
         }catch(err:any){
             catchError(err,next)
+        }
+    }
+
+    //verify doctor
+    async verifyDoctor (id:string,next:Next):Promise<IDoctor|void>{
+        try {
+            const result = await verifDoctorFn(id,this.adminRepository,next)
+            return result
+        } catch (error:any) {
+            catchError(error,next)
         }
     }
 

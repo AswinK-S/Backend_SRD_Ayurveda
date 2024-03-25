@@ -33,6 +33,8 @@ export interface IadminUseCase {
     getDoctorsUseCase(req:Req,next:Next):Promise<IDoctor[]|void>    
     //list or unlist user
     listUnlstDoc(id:string,next:Next):Promise<string|void>
+    //verifyDoctor
+    verifyDoctor (id:string,next:Next):Promise<IDoctor|void>
 
 //--------------------------------------------------------------------------------------users    
 

@@ -14,4 +14,5 @@ export interface IadminRepository{
     findTreatmentAdmnRepo(id:string):Promise<ITreatment|void>
     rmvSubTrtmntAdmnRepo(id:string,subName:string):Promise<ITreatment | void>
     updateTrtmntAdmnRepo(id:string,subTreatments:ISubTreatment[]):Promise<{treatment:ITreatment|null,message:string}>
+    verifyDoctorRepo(id:string):Promise<IDoctor|void>
 }
