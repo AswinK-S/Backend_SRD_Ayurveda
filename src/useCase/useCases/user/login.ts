@@ -17,16 +17,19 @@ export const login = async (
     try {
         const user = await userRepository.findUsersByEmail(email)
 
-        if (!user) return next(new ErrorHandler(400, 'invalid email id'))
+        if (!user) return next(new ErrorHandler(401, 'Invalid credentials'))
 
         const hashedPassword = user.password
         const result = await bcrypt.comparePassword(password, hashedPassword)
         console.log('passwrd cmpr :', result);
-        if (!result) return next(new ErrorHandler(400, 'Invalid Password'))
+        if (result===false) {
+            const err= next(new ErrorHandler(401, 'Invalid credentials'))
+            console.log('err----',err);
+        }
 
         if (user.status && result) {
             user.password = ''
-            const role = 'user'
+            const role:string = 'user'
             const tokens = await token.createAccessAndRefreshToken(user?._id as string, role as string)
             return {
                 user,

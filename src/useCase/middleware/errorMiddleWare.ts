@@ -3,9 +3,9 @@ import ErrorResponse from "./errorHandler";
 
 export const errorMiddleware =(err:any , req:Req, res:Res, next:Next) =>{
     err.statusCode = err.statusCode || 500
-    err.message = err.message || 'internal server error'
+    const message:string = err.message || 'internal server error'
     console.log('useCase/middleware/errormiddleware ');
-    console.log('err from errmdlware',err)
+    // console.log('err from errmdlware',err)
 
 
     // if (err.name === "castError") {
@@ -33,8 +33,7 @@ export const errorMiddleware =(err:any , req:Req, res:Res, next:Next) =>{
     
 
       res.status(err.statusCode).json({
-        // status: err.statusCode,
-        success: false,
-        message: err.message,
+        success:false,
+        message:message
       });
 } 

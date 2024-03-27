@@ -12,7 +12,7 @@ const doctorSchema: Schema<IDoctor> = new mongoose.Schema({
     treatment:{type:String,required:true},
     subTreatment:{type:String,required:true},
     status: { type: Boolean ,default:true},
-    isVerified: { type: Boolean,default:false },
+    isVerified: { type: Boolean,default:false },        
     image:{type:String},
     document:{type:String}
 })
